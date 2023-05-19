@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import axios from 'axios'
 
 const GetUsersComponent = () => {
+  console.log(API_URL);
+  console.log(process.env);
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  console.log(API_URL);
-  console.log(process.env);
   
   const getUsers = async () => {
     try {
