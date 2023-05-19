@@ -3,15 +3,14 @@ import React, { useState } from 'react';
 import axios from 'axios'
 
 const GetUsersComponent = () => {
-  console.log(API_URL);
-  console.log(process.env);
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   
   const getUsers = async () => {
     try {
-      const response = await axios.get(`${API_URL}/auth`);
+      // const response = await axios.get(`${API_URL}/auth`);
+      const response = await axios.get(`https://floating-meadow-00339.herokuapp.com/auth`);
       const data = response.data;
       console.log(data);
     } catch (error) {
