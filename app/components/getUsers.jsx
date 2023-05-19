@@ -6,6 +6,8 @@ const GetUsersComponent = () => {
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  console.log(API_URL);
+  console.log(process.env);
   
   const getUsers = async () => {
     try {
