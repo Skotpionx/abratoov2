@@ -5,7 +5,7 @@ import axios from 'axios'
 const GetUsersComponent = () => {
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   
   const getUsers = async () => {
     try {
