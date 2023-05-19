@@ -6,6 +6,7 @@ import Image from 'next/image'
 import '../styles/authBox.css'
 import '../styles/font.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CardReservaSelect from './cardReseva'
 import BoxText from './textBox'
 
 const AuthBox = () => {
@@ -29,6 +30,7 @@ const AuthBox = () => {
                     <Col xs={12} md={6}>
                         <h1> Abratoo </h1>
                         <Badge>  Tu estudio de tatuajes de confianza en granada </Badge>
+                        <CardReservaSelect/>
                         {/* TO DO : OBTENER IMAGENES DE LA API (MONGODB) Y MOSTRARLAS EN CARRUSEL?*/}
                     </Col>
 

@@ -11,6 +11,44 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
+
+exports.getUserByDNI = async (req, res) => {
+  try {
+    const { dni } = req.params;
+    const user = await User.findOne({ dni });
+
+    if (user) {
+      // Ya existe un usuario con ese DNI
+      return res.status(200).json({ exists: true });
+    }
+
+    // No se encontró ningún usuario con ese DNI
+    res.status(200).json({ exists: false });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Error interno del servidor' }, err);
+  }
+};
+
+exports.getUserByEmail = async (req, res) => {
+  try {
+    const { email } = req.params;
+    const user = await User.findOne({ email });
+
+    if (user) {
+      // Ya existe un usuario con ese email
+      return res.status(200).json({ exists: true });
+    }
+
+    // No se encontró ningún usuario con ese email
+    res.status(200).json({ exists: false });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: 'Error interno del servidor' }, err);
+  }
+};
+
+
 exports.createUser = async (req, res) => {
   try {
     const salt = bcrypt.genSaltSync(10);

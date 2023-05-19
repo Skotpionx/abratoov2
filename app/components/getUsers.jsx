@@ -5,9 +5,9 @@ import axios from 'axios'
 const GetUsersComponent = () => {
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
-
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   const getUsers = async () => {
-    const API_URL = process.env.REACT_APP_API_URL;
     try {
       const response = await axios.get(`${API_URL}/auth`);
       const data = response.data;

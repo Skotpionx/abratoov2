@@ -6,24 +6,30 @@ const UserSchema = new mongoose.Schema({
     },
     edad: {
         type: Number,
-        required: false
+        required: true
     },
     password:{
         type: String,
-        required: false
+        required: true
     },
     email: {
         type: String,
-        required: false
+        required: true,
+        unique: true,
     },
     dni: {
         type: String,
-        required: false
+        required: true,
+        unique: true,
     },
     telefono: String,
     direccion: String,
     imagenes: [String],
     pseudonimo: String,
+    admin:{
+        type: Boolean,
+        default: false,
+    }
 }, {
     timestamps: true
 });

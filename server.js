@@ -24,6 +24,7 @@ const usersRoute = require("./backend/routes/users");
 
 app.use("/auth", usersRoute);
 
+
 app.listen(port, () => {
     connect();
     console.log(`Server is running on port ${port}`);
