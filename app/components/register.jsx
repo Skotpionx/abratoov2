@@ -58,8 +58,6 @@ const Register = ({ setRegistering }) => {
             }
 
             const response = await axios.post(`${API_URL}/auth`, formData);
-            const data = response.data;
-            console.log(data);
         } catch (error) {
             console.error(error);
         }

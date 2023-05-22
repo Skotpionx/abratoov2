@@ -5,12 +5,11 @@ import axios from 'axios'
 const GetUsersComponent = () => {
   const [nombre, setNombre] = useState('');
   const [password, setPassword] = useState('');
-  //const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
   
   const getUsers = async () => {
     try {
-      // const response = await axios.get(`${API_URL}/auth`);
-      const response = await axios.get(`https://floating-meadow-00339.herokuapp.com/auth`);
+      const response = await axios.get(`${API_URL}/auth`);
       const data = response.data;
       console.log(data);
     } catch (error) {
@@ -18,18 +17,18 @@ const GetUsersComponent = () => {
     }
   };
 
-  // const createUser = async () => {
-  //   try {
-  //     const response = await axios.post(`${API_URL}/auth`, {
-  //       nombre,
-  //       password
-  //     });
-  //     const data = response.data;
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+  const createUser = async () => {
+    try {
+      const response = await axios.post(`${API_URL}/auth`, {
+        nombre,
+        password
+      });
+      const data = response.data;
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleCreateUser = () => {
     createUser();

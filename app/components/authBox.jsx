@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Register from './register'
 import { Container, Row, Col, Form, Button, Badge} from 'react-bootstrap'
 import Image from 'next/image'
@@ -8,22 +8,25 @@ import '../styles/font.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CardReservaSelect from './cardReseva'
 import BoxText from './textBox'
+import Footer from './footer'
 
 const AuthBox = () => {
 
     const [isRegistering, setRegistering] = useState(false);
     return ( 
+        <div className="parent-container"> 
+
+<div className="img-container">
+                <Image 
+                src="/logotfg.png" 
+                className="auth-logo" 
+                alt="Vuelta a Home" 
+                priority={true}
+                width={150} 
+                height={150}
+                />
+            </div>
         <div className="auth-container">
-            <Image 
-            src="/logotfg.png" 
-            className="auth-logo" 
-            alt="Vuelta a Home" 
-            priority={true}
-            width={150} 
-            height={150}
-            />
-
-
 
             <Container className="auth-form-container">
                 <Row>
@@ -71,8 +74,13 @@ const AuthBox = () => {
                     </Col>
                 </Row>
             </Container>
-            { <BoxText  /> }
+
+
+
         </div> 
+        <BoxText/> 
+        <Footer/>
+        </div>
     )
 }
 

@@ -35,6 +35,7 @@ export const validateForm = (formData) => {
         }
         
         // Validar coincidencia de contraseñas
+        //Validar que tenga una mayuscula, una minuscula, 1 numero y un caracter raro longitu dminima 8 caracteres 
         password !== password2 ? errors.password2 = 'Las contraseñas no coinciden' : ''
     
         // Validar teléfono (9 o 10 caracteres)

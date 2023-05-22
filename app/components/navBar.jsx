@@ -27,13 +27,12 @@ const NavBar = () => {
             <Nav className="ml-auto">
               <Nav.Link href="#servicios">Servicios</Nav.Link>
               <Nav.Link href="#tienda">Tienda</Nav.Link>
-              <p> REACT APP MY ENV VARIABLE {process.env.REACT_APP_API_URL}</p>
               <Nav.Link href="#citas">Citas</Nav.Link>
             </Nav>
             {!expanded && (
               <div className="navbarImageContainer">
                 <Image
-                  src="/logotfg.png"
+                  src="/soullogo.png"
                   className="navbar-image"
                   alt="Logo de la Empresa"
                   width={150}

@@ -55,6 +55,11 @@ exports.createUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const newUser = new User({ ...req.body, password: hashedPassword });
     const savedUser = await newUser.save();
+
+    //Protección CSRF y Clickjacking
+    res.setHeader('Set-Cookie', 'SameSite=Lax; HttpOnly; Secure');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+
     res.status(201).json(savedUser);
   } catch (err) {
     console.log(err)
