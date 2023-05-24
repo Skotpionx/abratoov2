@@ -9,9 +9,8 @@ const GetUsersComponent = () => {
   
   const getUsers = async () => {
     try {
-      const response = await axios.get(`${API_URL}/auth`);
+      const response = await axios.get(`${API_URL}/auth`, {withCredentials: true});
       const data = response.data;
-      console.log(data);
     } catch (error) {
       console.error(error);
     }

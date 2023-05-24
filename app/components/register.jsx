@@ -52,14 +52,14 @@ const Register = ({ setRegistering }) => {
 
             const dniResponse = await axios.get(`${API_URL}/auth/dni/${formData.dni}`);
             if (dniResponse.data.exists) {
-            // Usuario con ese DNI ya existe, mostrar error
-            setErrors({ dni: 'Ya existe un usuario con ese DNI' });
-            return;
+                // Usuario con ese DNI ya existe, mostrar error
+                setErrors({ dni: 'Ya existe un usuario con ese DNI' });
+                return;
             }
 
             const response = await axios.post(`${API_URL}/auth`, formData);
         } catch (error) {
-            console.error(error);
+            console.error(`No se ha llevado a cabo la petición debido al siguiente error: ${error}`);
         }
     };
     
