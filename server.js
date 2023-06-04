@@ -22,7 +22,7 @@ const connect = async () =>{
 // app.use(cors({ credentials: true, origin: true }));
 //PRODUCCION
 const corsOptions = {
-    origin: 'https://abratoov2-6h58.vercel.app',
+    origin: ['https://abratoov2-6h58.vercel.app', 'http://localhost:3000'],
     credentials: true, // Esto permite que las cookies se envíen con las solicitudes de CORS.
 };
 app.use(cors(corsOptions));
