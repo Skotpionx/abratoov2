@@ -167,8 +167,8 @@ exports.loginUser = async (req, res) => {
     return res.cookie("access_token", token, {
       httpOnly: true,
       maxAge: 3600000, //Una hora 
-      secure: false,  
-      sameSite: 'lax',  
+      secure: true,  
+      sameSite: 'None',  
       path: '/',
     })
     .status(200)
@@ -187,8 +187,8 @@ exports.logoutUser = (req, res) =>{
     res.clearCookie("access_token", { 
       httpOnly: true,
       maxAge: 0, //La terminamos en este momento
-      secure: false,  
-      sameSite: 'lax',  
+      secure: true,  
+      sameSite: 'None',  
       path: '/',
     })
     res.setHeader('Cache-Control', 'no-store');// IMPORTANTE ESTO, SI NO , NO SE BORRA LA COOKIE :( (4 horas para encontrar el error 😭))
