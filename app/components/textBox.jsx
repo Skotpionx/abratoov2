@@ -27,8 +27,6 @@ const BoxText = () => {
 
         window.addEventListener('resize', handleResize);
 
-        // Call the handleResize function initially to calculate
-        // the width on first render
         handleResize();
 
         return () => {

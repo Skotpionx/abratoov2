@@ -1,19 +1,20 @@
 import React , { useState , handleChange , handleSubmit } from 'react'
 import { Container, Row, Col, Form, Button, Badge, Alert } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/register.css'
+import { useRouter } from 'next/router';
 import { validateForm } from "../js/validation"
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/register.css'
 
 const Register = ({ setRegistering }) => {
-
+    const router = useRouter();
     const [formData, setFormData] = useState({
         nombre: '',
         edad: '',
         email: '',
         telefono: '',
         direccion: '',
-        imagenes: [],
+        image: null,
         dni: '',
         password: '',
         password2: '',
@@ -28,7 +29,13 @@ const Register = ({ setRegistering }) => {
             [e.target.name]: e.target.value,
         }));
     };
-    
+
+    const handleImageChange = (e) => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            image: e.target.files[0],  
+        }));
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         const errors = validateForm(formData);
@@ -43,23 +50,44 @@ const Register = ({ setRegistering }) => {
             const API_URL = process.env.NEXT_PUBLIC_API_URL;
             setErrors({}); // Restablecer los errores a un objeto vacío
 
-            const emailResponse = await axios.get(`${API_URL}/auth/email/${formData.email}`);
+            const emailResponse = await axios.get(`${API_URL}/admin/users/email/${formData.email}`);
             if (emailResponse.data.exists) {
-                // Usuario con ese DNI ya existe, mostrar error
+                // Usuario con ese EMAIL ya existe, mostrar error
                 setErrors({ email: 'Ya existe un usuario con ese EMAIL' });
                 return;
             }
 
-            const dniResponse = await axios.get(`${API_URL}/auth/dni/${formData.dni}`);
+            const dniResponse = await axios.get(`${API_URL}/admin/users/dni/${formData.dni}`);
             if (dniResponse.data.exists) {
                 // Usuario con ese DNI ya existe, mostrar error
                 setErrors({ dni: 'Ya existe un usuario con ese DNI' });
                 return;
             }
 
-            const response = await axios.post(`${API_URL}/auth`, formData);
+            const form = new FormData();
+            for (const key in formData) {
+                form.append(key, formData[key]);
+            }
+
+            const response = await axios.post(`${API_URL}/auth/register`, formData, {
+                headers:{
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            if( response.status === 201 ){
+                const responseLogin = await axios.post(`${API_URL}/auth/login`, { dni: `${formData.dni}`, password: `${formData.password}` }, {withCredentials: true});
+                if (responseLogin.status === 200){
+                    router.push('/');
+                }
+            }
         } catch (error) {
-            console.error(`No se ha llevado a cabo la petición debido al siguiente error: ${error}`);
+            if(error.response && error.response.data){
+                return { error: error.response.data };
+            }
+            else{
+                return { error: "Unexpected error"};
+            }
         }
     };
     
@@ -174,14 +202,31 @@ const Register = ({ setRegistering }) => {
                         onChange={handleChange}
                     />
                 </Form.Group>
+                <Form.Group>
+                    <Form.Label > Imagen de perfil PNG O JPG*</Form.Label>
+                        <Form.Control
+                            type="file"
+                            name="image"
+                            onChange={handleImageChange}
+                            required
+                            isInvalid={errors.image} 
+                        />
+                    <Form.Control.Feedback type="invalid">{errors.image}</Form.Control.Feedback>
+                </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Registrarse
-                </Button>
+                <Form.Group className="row mt-4 mb-4" >
+                    <div className="col-md-4">
+                        <Button variant="primary" type="submit" >
+                            Registrarse
+                        </Button>
+                    </div>
+                    <div className="col-md-8">
+                        <Button variant="secondary" onClick={() => setRegistering(false)}>
+                        ¿Ya tienes una cuenta? Logeate!
+                        </Button>
+                    </div>
+                </Form.Group>
             </Form>
-            <Button variant="secondary" onClick={() => setRegistering(false)}>
-                ¿Ya tienes una cuenta? Logeate!
-            </Button>
         </div>
     )
 }

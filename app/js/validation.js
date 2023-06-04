@@ -1,14 +1,6 @@
 export const validateForm = (formData) => {
-    const { nombre, edad, email, dni, password, password2, telefono } = formData;
+    const { nombre, edad, email, dni, password, password2, telefono , image} = formData;
     const errors = {};
-    
-
-
-    
-        // Validar nombre
-        // if (nombre.trim().length < 3) {
-        //     errors.nombre = 'El nombre debe tener al menos 3 caracteres';
-        // }
         
         nombre.trim().length < 3 ? errors.nombre = 'El nombre debe tener al menos 3 carácteres' : ''
 
@@ -34,14 +26,20 @@ export const validateForm = (formData) => {
             errors.dni = 'Introduce un DNI correcto';
         }
         
-        // Validar coincidencia de contraseñas
-        //TO DO Validar que tenga una mayuscula, una minuscula, 1 numero y un caracter raro longitu dminima 8 caracteres 
+        // Validar coincidencia de contraseñas 
         password !== password2 ? errors.password2 = 'Las contraseñas no coinciden' : ''
     
         // Validar teléfono (9 o 10 caracteres)
         const telefonoRegex = /^(?:\+34)?[67]\d{8}$/;
         !telefonoRegex.test(telefono) ? errors.telefono = 'El teléfono no es válido' : ''
 
+    
+        const acceptedExtensions = ['jpg', 'jpeg', 'png'];
+        
+        const fileExtension = image.name.split('.').pop().toLowerCase();
+        if (!acceptedExtensions.includes(fileExtension)) {
+            errors.image = 'Solo se permiten imágenes .jpg, .jpeg o .png';
+        }
 
     return errors;
 };

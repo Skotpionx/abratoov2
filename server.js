@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const cors = require('cors');
 
+
 // MongoDB
 const connect = async () =>{
     try{
@@ -20,12 +21,18 @@ app.use(cors({ credentials: true, origin: true }));
 app.use(cookieParser());
 app.use(express.json());
 
-const usersRoute = require("./backend/routes/users");
+const usersRoute = require("./backend/routes/users.js");
+const adminRoute = require("./backend/routes/admin.js");
+const authRoute = require("./backend/routes/auth.js");
+const postRoute = require("./backend/routes/posts.js")
 
-app.use("/auth", usersRoute);
 
+app.use("/admin", adminRoute);
+app.use("/users", usersRoute);
+app.use("/auth", authRoute);
+app.use("/posts", postRoute);
 
-app.listen(port, () => {
+app.listen(port, (req,res) => {
     connect();
     console.log(`Server is running on port ${port}`);
 });

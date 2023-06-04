@@ -1,7 +1,34 @@
 const bcrypt = require('bcryptjs');
 const User = require("../models/userModel")
 const jwt = require('jsonwebtoken')
+const AWS = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 
+AWS.config.update({
+  accessKeyId: process.env.AWS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_KEY,
+  region: 'eu-west-3' 
+});
+
+const s3 = new AWS.S3();
+
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'imagenestfg',
+    metadata: function (req, file, cb) {
+      cb(null, {fieldName: file.fieldname});
+    },
+    key: function (req, file, cb) {
+      const timestamp = new Date().getTime();
+      const key = `${timestamp}_${file.originalname}`;
+      cb(null, key)
+    }
+  })
+})
+
+exports.uploadImage = upload.single('image');
 
 exports.getAllUsers = async (req, res) => {
   try {
@@ -67,7 +94,7 @@ exports.createUser = async (req, res) => {
 
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    const newUser = new User({ ...req.body, password: hashedPassword });
+    const newUser = new User({ ...req.body, password: hashedPassword , imagenes: req.file.location});
     const savedUser = await newUser.save();
 
     //Protección CSRF y Clickjacking
@@ -136,19 +163,40 @@ exports.loginUser = async (req, res) => {
 
     const token = jwt.sign({ userId: user._id , admin: user.admin}, process.env.JWT_SECRET)
 
-    res
-    .cookie("access_token", token, {
+    //Establecemos la cookie con la que vamos a controlar la sesión.
+    return res.cookie("access_token", token, {
       httpOnly: true,
-      maxAge: 3600000,
+      maxAge: 3600000, //Una hora 
       secure: false,  
       sameSite: 'lax',  
-      path: '/'
+      path: '/',
     })
-
-    return res.status(200).json( { userId: user._id, username: user._username});
+    .status(200)
+    .json({ 
+      userId: user._id, 
+      username: user._username, 
+      message: 'Inicio de sesión exitoso'})
 
   }catch (error){
     return res.status(500).json({ message: 'Error interno del servidor.'})
   }
 }
 
+exports.logoutUser = (req, res) =>{
+  try{
+    res.clearCookie("access_token", { 
+      httpOnly: true,
+      maxAge: 0, //La terminamos en este momento
+      secure: false,  
+      sameSite: 'lax',  
+      path: '/',
+    })
+    res.setHeader('Cache-Control', 'no-store');// IMPORTANTE ESTO, SI NO , NO SE BORRA LA COOKIE :( (4 horas para encontrar el error 😭))
+    
+    res.status(200).json( {message: 'Logout exitoso'})
+    res.end();
+
+  }catch (error ){
+    res.status(500).json({ message: "Ha ocurrido un error mientras te deslogeabas." });
+  }
+}

@@ -1,17 +1,17 @@
+'use client'
 import styles from './page.module.css'
 import NavBar from './components/navBar.jsx'
 import Footer from './components/footer'
-import GetUsersComponent from './components/getUsers'
+import Header from './components/header'
 
 export default function Home() {
   return (
-    <> 
-    <NavBar/>
-    <main className={styles.main}>
-        {/* <CreateUser/> */}
-    </main>
-    <GetUsersComponent/>
-    <Footer/>
+    <>
+      <NavBar />
+      <Header/>
+      <Footer />
+
+
     </>
   )
 }

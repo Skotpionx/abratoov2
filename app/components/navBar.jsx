@@ -1,12 +1,13 @@
 'use client'
-import { Navbar, Nav , Container } from 'react-bootstrap';
+import { Navbar, Nav , Container } from 'react-bootstrap'
 import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/navBar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../styles/navBar.css'
 import '../styles/font.css'
 import  Image  from 'next/image'
+import Link from 'next/link';
 
 const NavBar = () => {
     const [expanded, setExpanded] = useState(false);
@@ -25,12 +26,13 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="#servicios">Servicios</Nav.Link>
+              <Nav.Link href="/estudio">Instalaciones</Nav.Link>
               <Nav.Link href="#tienda">Tienda</Nav.Link>
               <Nav.Link href="#citas">Citas</Nav.Link>
             </Nav>
             {!expanded && (
               <div className="navbarImageContainer">
+              <Link href="/">
                 <Image
                   src="/soullogo.png"
                   className="navbar-image"
@@ -39,6 +41,7 @@ const NavBar = () => {
                   height={150}
                   priority={true}
                 />
+              </Link>
               </div>
             )}
             <Nav className="ml-auto">

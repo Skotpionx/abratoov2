@@ -1,16 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { createUser , getAllUsers , getUser , updateUser, deleteUser, getUserByDNI, getUserByEmail, loginUser} = require("../controllers/usersControllers")
-const { verifyAdmin } = require("../controllers/sessionControllers")
+const { getOwnProfile, updateOwnProfile} = require("../controllers/profileControllers.js")
+const { serverVerifyUser } = require("../controllers/sessionControllers")
+const { createTatuador } = require("../controllers/tatuadorController")
 
-router.get('/',verifyAdmin, getAllUsers);
-router.post('/', createUser);
-router.post('/login', loginUser)
-router.get('/:id', getUser);
-router.get('/dni/:dni', getUserByDNI);
-router.get('/email/:email', getUserByEmail)
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
+
+router.get('/profile',serverVerifyUser, getOwnProfile);
+router.put('/updateProfile', updateOwnProfile);
+// router.delete('/profile', verifyUser, getUser);
+router.post('/tatuadores', createTatuador );
+
 
 
 module.exports = router;
