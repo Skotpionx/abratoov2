@@ -17,7 +17,14 @@ const connect = async () =>{
     }
 };
 //Middlewares
-app.use(cors({ credentials: true, origin: true }));
+//DESARROLLO
+// app.use(cors({ credentials: true, origin: true }));
+//PRODUCCION
+const corsOptions = {
+    origin: 'https://abratoov2-6h58-a2jqx8fyc-skotpionx.vercel.app',
+    credentials: true, // Esto permite que las cookies se envíen con las solicitudes de CORS.
+};
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
