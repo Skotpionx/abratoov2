@@ -3,8 +3,7 @@ import '../app/styles/estudio.css'
 import '../app/styles/font.css'
 import NavBar from '../app/components/navBar';
 import Footer from '../app/components/footer';
-import Recepcion from '../app/components/Recepcion';
-
+import Recepcion from "../app/components/recepcion"
 
 const Estudio = () => {
     return (

@@ -89,8 +89,6 @@ const Recepcion = () => {
               </p>
             </Col>
           </Row>
-          <button onClick={setCookie}>Establecer Cookie</button>
-          <button onClick={removeCookieAndReload}>Eliminar Cookie y Recargar</button>
         </Container>
       );
 }
