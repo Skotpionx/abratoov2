@@ -26,9 +26,27 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="/estudio">Instalaciones</Nav.Link>
-              <Nav.Link href="#tienda">Tienda</Nav.Link>
-              <Nav.Link href="#citas">Citas</Nav.Link>
+              <Nav.Link href="/estudio"> 
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Recepción </Nav.Link>
+              <Nav.Link href="#tienda">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Ubicación </Nav.Link>
+              <Nav.Link href="#citas"> 
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Citas </Nav.Link>
             </Nav>
             {!expanded && (
               <div className="navbarImageContainer">
@@ -45,9 +63,27 @@ const NavBar = () => {
               </div>
             )}
             <Nav className="ml-auto">
-              <Nav.Link href="#sobreMi">Sobre mí</Nav.Link>
-              <Nav.Link href="#blog">Blog</Nav.Link>
-              <Nav.Link href="#contacto">Contacto</Nav.Link>
+              <Nav.Link href="#sobreMi">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+                Sobre mí</Nav.Link>
+              <Nav.Link href="#blog">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+                Blog</Nav.Link>
+              <Nav.Link href="#contacto">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+                Contacto</Nav.Link>
               <Nav.Link href="/auth">
                 <FontAwesomeIcon icon={faUser} />
               </Nav.Link>

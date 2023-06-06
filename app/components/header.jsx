@@ -59,71 +59,47 @@
 
 // export default Header;
 'use client'
-import React, { useEffect, useState } from 'react';
-import { useSpring, animated, config } from 'react-spring';
-import axios from 'axios';
-import { useRouter } from 'next/router';
-
+import React from 'react';
+import '../styles/header.css'
+import ReservaContainer from './reservaContainer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const { transform, opacity } = useSpring({
-    opacity: isFlipped ? 1 : 0,
-    transform: `perspective(600px) rotateY(${isFlipped ? 180 : 0}deg)`,
-    config: config.gentle,
-  });
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
-      const handleLogoutClick = async() => {
-        try{
-          const response= await axios.post(`${API_URL}/auth/logout`, {withCredentials: true, headers: { 'Custom-Header': 'logout' }} );
-          if(response.status === 200){
-              console.log(response.data)// Redirigimos a la home para forzar la correcta limpieza de cookies
-          }
-        }catch (error ){
-          console.error(error);
-        }
-        }
+    return (
+        <div className="divHeader">
+            <div className='divTxt'>
+                <div>
+                    <h1 > Soul Tattoo GRX  </h1>        
+                    <span> Desde 2016 tatuando más que tatuajes. Reserva una cita para el tuyo!</span>
+                </div> 
+                <div className='promociones'>
+                    <h5> Conoce ya nuestras magníficas </h5>
+                    <h2 className="promociones"> PROMOCIONES
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                    </h2> 
+                </div> 
+            </div>
+            <div className="neonLineContainer">
+                <div className="neonLineTop"></div>
+                <div className="neonContainer">
+                <FontAwesomeIcon icon={faClock} className='neon'/>
 
-    
+                </div>
+                <div className="neonIcon">
+                </div>
+                <div className="neonLineBottom"></div>
+            </div>
+            <div className='reservaContainer'>
+                <ReservaContainer> </ReservaContainer>
+            </div>
+        </div>
+    )
+}
 
-  return (
-    <div 
-      style={{maxHeight: "700px", height:"700px", overflow: "hidden", position: "relative"}} 
-      onClick={() => setIsFlipped(!isFlipped)}
-    >
-      <animated.img 
-        src="/tattooArtist.jpg" 
-        alt="Responsive image" 
-        style={{
-          cursor: "pointer",
-          height: "100%", 
-          width: "100%", 
-          position: "absolute",
-          opacity: opacity.interpolate(o => 1 - o),
-          transform,
-          backfaceVisibility: 'hidden',
-        }} 
-      />
-      <animated.div 
-        style={{
-          opacity,
-          transform: transform.interpolate(t => `${t} rotateY(180deg)`),
-          position: 'absolute',
-          cursor: 'pointer',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          backfaceVisibility: 'hidden'
-        }}
-      >
-        <p>Aquí va el componente {'>'} Reserva </p>
-
-    <button  onClick={handleLogoutClick}> Cerrar sesión </button>
-      </animated.div>
-    </div>
-  );
-};
 
 export default Header;

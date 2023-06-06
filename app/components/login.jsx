@@ -29,7 +29,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const API_URL = process.env.NEXT_PUBLIC_API_URL;
-            const response = await axios.post(`${API_URL}/auth/login`, { dni: emailOrDNI, password }, { withCredentials: true });
+            const response = await axios.post(`${API_URL}/auth/login`, { dniOrEmail: emailOrDNI, password }, { withCredentials: true });
             if (response.status === 200) {
                 router.push('/');
             }

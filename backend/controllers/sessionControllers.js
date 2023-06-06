@@ -14,7 +14,7 @@ exports.verifyAdmin = (req, res, next) => {
 
         next();
     } catch (error) {
-        return res.status(401).json({ message: 'Acceso no autorizado' })
+        return res.status(401).json({ message: 'Acceso no autorizado', error: error })
     }
 }
 
@@ -76,7 +76,7 @@ exports.clientVerifyUser = async (req,res) => {
             }
         })
     }catch(error){
-        return res.status(500).json({ message: 'Error interno del servidor'});
+        return res.status(500).json({ message: 'Error interno del servidor', error: error});
     }
 }
 
@@ -91,6 +91,6 @@ exports.serverVerifyUser = async (req,res, next) => {
             }
             next();
     }catch(error){
-        return res.status(500).json({ message: 'Error interno del servidor'});
+        return res.status(500).json({ message: 'Error interno del servidor', error: error});
     }
 }

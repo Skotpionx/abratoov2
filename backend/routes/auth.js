@@ -7,6 +7,6 @@ const { isLogged  , verifyUser, clientVerifyUser, serverVerifyUser} = require(".
 router.get('/status', clientVerifyUser);
 router.post('/register', uploadImage,  createUser);
 router.post('/login',  loginUser);
-router.post('/logout', logoutUser);
+router.post('/logout', serverVerifyUser,  logoutUser);
 
 module.exports = router;

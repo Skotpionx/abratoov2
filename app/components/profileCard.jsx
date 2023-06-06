@@ -45,6 +45,7 @@ const ProfileCard = ( {userData, setUserData}) => {
   useEffect(() => {
     if(userData) {
       setLoading(false);
+      console.log(userData);
     }
   }, [userData]);
 
@@ -74,15 +75,23 @@ const ProfileCard = ( {userData, setUserData}) => {
 
   const handleCrearTatuador = async ()  =>{
     try{
+      //NO HACEMOS VERIFICACIÓN DE SI YA ES TATUADOR MAS QUE NO MOSTRAR EL BOTÓN, DEBIDO A QUE ESE USERID ES UNA REFERENCIA Y MONGO NO DEJA CREAR MÁS DE UNO.
+      // ESE ERROR NOS LO AHORRAMOS (LO GESTIONA MONGO)
         const API_URL = process.env.NEXT_PUBLIC_API_URL
         const tatuadorData = {
-            "valoracionMedia": 4.7,
-            "experiencia": 5,
-            "ubicacion": "Madrid",
+            "valoracionMedia": 0,
+            "experiencia": 0,
+            "ubicacion": "",
       };
       const response = await axios.post(`${API_URL}/users/tatuadores`, tatuadorData, { withCredentials: true})
-      console.log(response.data);
-    }catch(error){
+      if(response.status === 201){
+        const userUpdateData = {
+          "esTatuador": true,
+        }
+        const responseUser = await axios.put(`${API_URL}/admin/users/${userData._id}`, userUpdateData, { withCredentials: true})
+        console.log(responseUser)
+      }
+  }catch(error){
       console.error(error)
     }
   }

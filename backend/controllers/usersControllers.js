@@ -145,9 +145,9 @@ exports.deleteUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   try{
     
-    const { dni, email, password } = req.body;
-    const query = dni ? { dni } : { email };
-    
+    const { dniOrEmail, password } = req.body;
+    let query = (dniOrEmail === undefined) ? { dni: req.body.dni } : (dniOrEmail.includes('@') ? { email: dniOrEmail } : { dni: dniOrEmail });
+
     // Buscamos el usuario por DNI o EMAIL para verificar su existencia
     const user = await User.findOne(query);
     
@@ -166,7 +166,7 @@ exports.loginUser = async (req, res) => {
     //Establecemos la cookie con la que vamos a controlar la sesión.
     return res.cookie("access_token", token, {
       httpOnly: true,
-      maxAge: 3600000, //Una hora 
+      maxAge: 3600000, //Una hora  // NAVEGADOR NO LA MUESTRA POR DEFECTO (EN PRODUCCIÓN) (pero si la almacena)
       secure: true,  
       sameSite: 'None',  
       path: '/',
@@ -178,7 +178,7 @@ exports.loginUser = async (req, res) => {
       message: 'Inicio de sesión exitoso'})
 
   }catch (error){
-    return res.status(500).json({ message: 'Error interno del servidor.'})
+    return res.status(500).json({ message: 'Error interno del servidor.', error: error})
   }
 }
 
@@ -186,7 +186,7 @@ exports.logoutUser = (req, res) =>{
   try{
     res.clearCookie("access_token", { 
       httpOnly: true,
-      maxAge: 0, //La terminamos en este momento
+      maxAge: 0, //La terminamos en el momento del logout, EN EL NAVEGEADOR POR DEFECTO NO SALE (EN PRODUCCION)
       secure: true,  
       sameSite: 'None',  
       path: '/',

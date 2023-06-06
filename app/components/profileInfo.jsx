@@ -64,7 +64,7 @@ const ProfileInfo = () => {
         </div>
   
         <div style={{ flex: '70%' }}>
-          {activeLink === 'perfil' && <ProfileCard userData={userData} setUserData={setUserData} />}
+          {activeLink === 'perfil' && <ProfileCard userData={userData}  />}
           {/* {activeLink === 'reservas' && <ProfileCard />}
           {activeLink === 'sesion' && <ProfileCard />}
           {activeLink === 'posts' && <ProfileCard />}
