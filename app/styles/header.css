@@ -58,6 +58,7 @@
   width: 50%;
   outline: none;
   text-shadow: 4px 4px 4px #BC9010;
+  padding-right: 1%;
 }
 .reservaContainer{
   width:50%;
@@ -87,27 +88,7 @@
     box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff;  
 }
 
-/* .neonIcon {
-  position: relative;
-  color: white; 
-  /* box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff;   */
-  /* width: 100px;
-  height: 100px;
-  background-position: center;
-  box-shadow: 0 0 80px 40px #00ffff;
-}
- */
 
-/* .neonIcon::after{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  z-index: 2;
-} */ 
 .neonContainer{
   margin-top: 30%;
   margin-bottom: 30%;
@@ -116,7 +97,7 @@
   background-color: white;
   width: 100px;
   box-shadow: 0 0 5px white, 0 0 10px #f8ff00, 0 0 15px white, 0 0 20px #ffe081;
-  height: 100px;
+  height: 100px !important;
   color: black;
   border-radius: 51px;
 }
@@ -130,13 +111,25 @@
   overflow:hidden;
   transition: 0.5s;
   letter-spacing: 3px;
+  cursor:pointer;
+  animation: color-change 3s infinite;
+  -webkit-animation: color-change 3s infinite;
 }
-
+@keyframes color-change {
+  0% { color: white; }
+  25% { color: whitesmokoe; }
+  50% { color: #ffe081; }
+  75% { color: #c4a54a; }
+  100% { color: #a8861f; }
+}
 .promociones span{
   position: absolute;
   display:block;
 }
 
+.promocionesContainer{
+  margin-top: 5%
+}
 
 .promociones span:nth-child(1){
   top:0;

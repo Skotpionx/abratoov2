@@ -1,7 +1,7 @@
 const ReservaContainer = () => {
     return (
         <div>
-            Este es el contenedor de la reserva
+            Meter contenedor de reserva aquí mejor
         </div>
     )
 }

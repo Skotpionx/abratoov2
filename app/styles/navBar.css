@@ -45,6 +45,7 @@
 }
 
 .nav-link {
+    color: white !important;
     position:relative;
     padding: 10px;
     display: inline-block;
