@@ -44,14 +44,19 @@ const Footer = () => {
                     <Col md={4}>
                         <h5>Redes Sociales</h5>
                         <ListGroup> 
-                            <ListGroupItem>
+                            <ListGroupItem className="footericons">
                                 <Link href="https://instagram.com/soultattoogrx"> 
-                                <FontAwesomeIcon icon={faInstagram} style={{ color: '#000000', width: '20px', height: '20px' }} />soultattoogrx
+                                <FontAwesomeIcon icon={faInstagram} style={{ color: 'white', width: '20px', height: '20px' }} />soultattoogrx
                                 </Link>
                             </ListGroupItem>
-                            <ListGroupItem>
-                                <Link href="https://instagram.com/Abra_Tattoo"> 
-                                <FontAwesomeIcon icon={faInstagram} style={{ color: '#000000', width: '20px', height: '20px' }} />Abra_Tattoo
+                            <ListGroupItem className="footericons">
+                                <Link href="https://instagram.com/abratoo"> 
+                                <FontAwesomeIcon icon={faInstagram} style={{ color: 'white', width: '20px', height: '20px' }} />Abra_Tattoo
+                                </Link>
+                            </ListGroupItem>
+                            <ListGroupItem className="footericons">
+                                <Link href="https://instagram.com/ju4nm1._"> 
+                                <FontAwesomeIcon icon={faInstagram} style={{ color: 'white', width: '20px', height: '20px' }} /> ©Skt.
                                 </Link>
                             </ListGroupItem>
                         </ListGroup>

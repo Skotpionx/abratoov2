@@ -14,17 +14,17 @@ const TatooArtistCard = ( { src, name, alias, experiencia, ubicacion }) => {
           <StyledCard>
             <CardContent>
               <Grid container spacing={3}>
-                <Grid item>
+                <Grid item className="image-container-perfil" >
                   <Image
                     src={src}
                     alt="Imagen de perfil"
-                    width={100}   
-                    height={100}  
+                    width={150}   
+                    height={150}  
                   />
                 </Grid>
                 <Grid item xs={12} sm container>
                   <Grid item xs container direction="column" spacing={2}>
-                    <Grid item xs>
+                    <Grid item xs className="info-tatto-container">
                         <Typography
                           variant="h5" 
                           component="div"

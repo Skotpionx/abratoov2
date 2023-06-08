@@ -10,22 +10,12 @@ import  Image  from 'next/image'
 import Link from 'next/link';
 
 const NavBar = () => {
-    const [expanded, setExpanded] = useState(false);
-  
-    const toggleNavbar = () => {
-      setExpanded((prevState) => !prevState);
-    };
-  
-    const handleNavbarClose = () => {
-      setExpanded(false);
-    };
-  
     return (
       <div className="navContainer">
-        <Navbar expand="sm" expanded={expanded} onToggle={toggleNavbar}>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar expand="lg">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav"  className="custom-toggler"/>
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="ml-auto">
+            <Nav className="ml-auto center">
               <Nav.Link href="/estudio"> 
               <span></span>
               <span></span>
@@ -48,7 +38,6 @@ const NavBar = () => {
               <span></span>
               Citas </Nav.Link>
             </Nav>
-            {!expanded && (
               <div className="navbarImageContainer">
               <Link href="/">
                 <Image
@@ -61,7 +50,6 @@ const NavBar = () => {
                 />
               </Link>
               </div>
-            )}
             <Nav className="ml-auto">
               <Nav.Link href="#sobreMi">
               <span></span>
@@ -90,13 +78,9 @@ const NavBar = () => {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        {expanded && <div className="navbarBackdrop" onClick={handleNavbarClose} />}
       </div>
     );
   };
-
-
-
 
 
 

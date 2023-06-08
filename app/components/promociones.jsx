@@ -15,7 +15,7 @@ const Promociones = ({ imageUrl, title, description }) => {
           </Col>
           <Col xs={12} md={12} lg={8} >
             <Card.Title>{title}</Card.Title>
-            <Card.Text dangerouslySetInnerHTML={{ __html: description }}></Card.Text>          
+            <Card.Text className="neonBrillo"  dangerouslySetInnerHTML={{ __html: description }}></Card.Text>          
           </Col>
         </Row>
       </Card.Body>

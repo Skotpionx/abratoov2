@@ -2,3 +2,28 @@ footer{
     background-color: black;
     color:white;
 }
+
+div > .list-group > .list-group-item{
+    background: none;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+div > .list-group > .list-group-item > a{
+    color: white;
+    text-decoration: none;
+    text-shadow: 3px 3px 3px rgb(175,135,35);
+}
+h5{
+    text-align: center;
+}
+.footericons > a {
+    display: flex;
+    justify-content: center;
+}
+
+.footericons > a svg {
+    align-self: center;
+    margin-right: 2%;
+}

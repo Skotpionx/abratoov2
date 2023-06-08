@@ -7,9 +7,10 @@
     font-family: 'Cascadia Code' !important;
 }
 .card-title{
-    color: rgb(255,232,28) !important;
-    text-shadow: 0px 0px 10px #0017E3; /* Ponemos el complementario como sombra :D */
+    color: #BC9010 !important;
+    text-shadow: 0px 0px 4px; /* Ponemos el complementario como sombra :D */
     margin-bottom: 10%;
+    text-align: center;
 }
 p{
     color: black;
@@ -69,4 +70,10 @@ p{
     90% {color: rgb(158,125,31);}
     95% {color: rgb(167,132,33);}
     100% {color: rgb(175,135,35);} 
-  }
+}
+.neonBrillo{
+    text-shadow: 0px 0px 4px #BC9010;
+}
+.promocionesContainer h5{
+    text-align: left;
+}
