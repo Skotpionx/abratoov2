@@ -6,7 +6,7 @@ import Footer from '../app/components/footer';
 import Recepcion from "../app/components/recepcion"
 
 const Estudio = () => {
-    return (
+    return (// FALTA PONER UN HEIGHT 100% Y UN OBJECT-FIT COVER
         <div className="estudio-container">
             <NavBar/>
             <main className="estudio-main">

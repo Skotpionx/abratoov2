@@ -53,8 +53,8 @@
 .divTxt{
   display: flex;
   flex-direction: column;
-  padding-left: 15%;
-  padding-top: 5%;
+  padding-left: 5%;
+  padding-top: 2%;
   width: 50%;
   outline: none;
   text-shadow: 4px 4px 4px #BC9010;
@@ -62,7 +62,6 @@
 }
 .reservaContainer{
   width:50%;
-  padding-top: 5%;
   opacity: 0;
   animation: fadeIn 2s forwards; 
 }
@@ -114,6 +113,8 @@
   cursor:pointer;
   animation: color-change 3s infinite;
   -webkit-animation: color-change 3s infinite;
+  animation-direction: alternate;
+
 }
 @keyframes color-change {
   0% { color: white; }
@@ -225,4 +226,69 @@
   100%{
       bottom:100%;
   }
+}
+
+.textShadow{
+  text-shadow: 4px 4px 4px #BC9010
+}
+.textShadowWhite{
+  text-align: center;
+  color: white;
+  text-shadow: 9px 2px 4px black;
+  background-color: #BC9010;
+  border-radius: 10px;
+  letter-spacing: 2px;
+}
+.boxShadow{
+  box-shadow: 0 0 10px #BC9010, 0 0 20px #BC9010, 0 0 30px #BC9010, 0 0 40px #BC9010;
+}
+.interested{  
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.interestedContainer{
+  display:flex;
+  flex-direction: column;
+}
+.todosTatuadoresContainer{
+  margin-top: 5%;
+  gap: 20px;
+  flex-direction:column;
+  display: flex;
+}
+.reservaButton {
+  background-color: black;
+  animation: color-change 3s infinite;
+  cursor: pointer;
+  animation-direction: alternate;
+}
+@keyframes colorChange {
+  0% {color: rgb(255,255,255);} /*white */
+  5% {color: rgb(251,249,244);}
+  10% {color: rgb(247,243,233);}
+  15% {color: rgb(243,237,222);}
+  20% {color: rgb(239,231,211);}
+  25% {color: rgb(235,225,200);}
+  30% {color: rgb(231,219,189);}
+  35% {color: rgb(227,213,178);}
+  40% {color: rgb(223,207,167);}
+  45% {color: rgb(219,201,156);}
+  50% {color: rgb(215,195,145);} /*#ffe81c */
+  55% {color: rgb(211,189,134);}
+  60% {color: rgb(207,183,123);}
+  65% {color: rgb(203,177,112);}
+  70% {color: rgb(199,171,101);}
+  75% {color: rgb(195,165,90);} /*#c4a54a */
+  80% {color: rgb(191,159,79);}
+  85% {color: rgb(187,153,68);}
+  90% {color: rgb(183,147,57);}
+  95% {color: rgb(179,141,46);}
+  100% {color: rgb(175,135,35);} /*#a8861f*/
+}
+
+.reservaInterested{
+  display:flex;
+  justify-content: center;
 }

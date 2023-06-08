@@ -18,49 +18,6 @@ exports.verifyAdmin = (req, res, next) => {
     }
 }
 
-// exports.verifyUser = async (req, res, next) => {
-//     try {
-//         const { access_token } = req.cookies;
-//         if (!access_token) return res.status(401).json({ message: 'No está autenticado', isAuthenticated: false });
-
-//         const decoded = jwt.verify(access_token, process.env.JWT_SECRET);
-//         if (!decoded) {
-//             return res.status(401).json({ message: 'No está autenticado', isAuthenticated: false });
-//         }
-//         next();
-
-//     } catch (error) {
-//         return res.status(500).json({ message: 'Error interno del servidor.' });
-//     }
-// };
-
-
-
-
-
-// exports.isLogged = async (req, res, next) => {
-//     try {
-//         const { access_token } = req.cookies;
-//         if (!access_token) {
-//             return res.status(200).json({ isAuthenticated: false });
-//         }
-//         jwt.verify(access_token, process.env.JWT_SECRET, (err, user) => {
-//             if(user){
-//                 return res.status(200).json( { isAuthenticated: true});
-//             }
-//             if (err) {
-//                 return res.status(200).json({ isAuthenticated: false });
-//             }
-            
-//             // El usuario está autenticado
-//             next();
-//         });
-//     } catch (error) {
-//         return res.status(500).json({ message: 'Error interno del servidor' });
-//     }
-// }
-
-
 exports.clientVerifyUser = async (req,res) => {
     try{
         const { access_token } = req.cookies;

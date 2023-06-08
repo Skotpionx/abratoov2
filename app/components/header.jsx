@@ -1,66 +1,7 @@
-// 'use client'
-// import React, { useState } from 'react';
-// import { useSpring, animated, config } from 'react-spring';
-// import { Container, Row, Col } from 'react-bootstrap';
 
-// const Header = () => {
-//   const [isFlipped, setIsFlipped] = useState(false);
-
-//   const { transform, opacity } = useSpring({
-//     opacity: isFlipped ? 1 : 0,
-//     transform: `perspective(600px) rotateY(${isFlipped ? 180 : 0}deg)`,
-//     config: config.gentle,
-//   });
-
-//   const handleHeaderClick = () => setIsFlipped(!isFlipped);
-
-//   return (
-//     <header onClick={handleHeaderClick}>
-//       <Container fluid className="h-100">
-//         <Row className="h-100">
-//           <Col className="h-100 position-relative overflow-hidden">
-//             <animated.div
-//               style={{
-//                 opacity: opacity.interpolate(o => 1 - o),
-//                 transform,
-//                 backfaceVisibility: 'hidden',
-//                 position: 'absolute',
-//                 width: '100%',
-//                 height: '100%'
-//               }}
-//             >
-//               <img
-//                 src="/tattooArtist.jpg"
-//                 alt="Tattoo Artist"
-//                 style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-//               />
-//             </animated.div>
-//             <animated.div
-//               style={{
-//                 opacity,
-//                 transform: transform.interpolate(t => `${t} rotateY(180deg)`),
-//                 position: 'absolute',
-//                 width: '100%',
-//                 height: '100%',
-//                 display: 'flex',
-//                 justifyContent: 'center',
-//                 alignItems: 'center',
-//                 backfaceVisibility: 'hidden'
-//               }}
-//             >
-//               <p>Test</p>
-//             </animated.div>
-//           </Col>
-//         </Row>
-//       </Container>
-//     </header>
-//   );
-// };
-
-// export default Header;
 'use client'
-import React, { useState } from 'react';
-import { useTransition, animated} from 'react-spring';
+import React, { useState, useEffect } from 'react';
+import { useTransition, animated } from 'react-spring';
 import ReservaContainer from './reservaContainer';
 import Promociones from './promociones.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -73,7 +14,7 @@ const Header = () => {
 
     const promociones = [
         {
-            imageUrl: "/daliArtista.jfif",
+            imageUrl: "/daliArtista.jpg",
             title: "DIA DEL ARTISTA",
             description: "Por un tatuaje de algún personaje histórico, un tatuaje de 5x5 <span class='colorText'>GRATIS</span>!"
         },
@@ -88,6 +29,23 @@ const Header = () => {
             description: "Aprovecha para preguntar todos los secretos a nuestros artistas!"
         }
     ];
+    let lastScrollTop = 0;
+    useEffect(() => {
+        const handleScroll = () => {
+          let st = window.pageYOffset || document.documentElement.scrollTop;
+          if (st > lastScrollTop){
+            setShowPromociones(true);
+          } else {
+            if (st === 0) { // Si hemos llegado a la parte superior de la página
+              setShowPromociones(false);
+            }
+          }
+          lastScrollTop = st <= 0 ? 0 : st; // Para móviles o negativos
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
 
     const transitions = useTransition(showPromociones, {
         from: { opacity: 0, transform: 'translateY(-20px)' },
@@ -100,21 +58,21 @@ const Header = () => {
         <div className="divHeader">
             <div className='divTxt'>
                 <div>
-                    <h1 > Soul Tattoo GRX  </h1>        
+                    <h1 > Soul Tattoo GRX  </h1>
                     <span> Desde 2016 tatuando más que tatuajes. Reserva una cita para el tuyo!</span>
-                </div> 
+                </div>
                 <div className='promocionesContainer'>
                     <h5>¿Aún no conoces nuestras magníficas </h5>
-                    <h2 
-                    className="promociones"
-                    onClick={ () => setShowPromociones( prev=> !prev)}
+                    <h2
+                        className="promociones"
+                        onClick={() => setShowPromociones(prev => !prev)}
                     > PROMOCIONES?
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                    </h2> 
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </h2>
                     {transitions((style, item) => item && (
                         <animated.div style={style}>
                             {promociones.map((promocion, index) => (
@@ -127,12 +85,12 @@ const Header = () => {
                             ))}
                         </animated.div>
                     ))}
-                </div> 
+                </div>
             </div>
             <div className="neonLineContainer">
                 <div className="neonLineTop"></div>
                 <div className="neonContainer">
-                <FontAwesomeIcon icon={faClock} className='neon'/>
+                    <FontAwesomeIcon icon={faClock} className='neon' />
 
                 </div>
                 <div className="neonIcon">
@@ -140,7 +98,7 @@ const Header = () => {
                 <div className="neonLineBottom"></div>
             </div>
             <div className='reservaContainer'>
-                <ReservaContainer/> 
+                <ReservaContainer />
             </div>
         </div>
     )
