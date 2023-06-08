@@ -16,9 +16,9 @@ const AuthBox = () => {
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
     useEffect(() => {
-        // Método para verificar al usuario
         const verifyUser = async () => {
             try {
+                //Verificamos si el usuario está logeado o no y redirijimos a su perfil o a que se logee/registre.
                 const response = await axios.get(`${API_URL}/auth/status`, { withCredentials: true}); 
                 if (response.data.isAuthenticated === true) {
                     setIsUserLogged(true);

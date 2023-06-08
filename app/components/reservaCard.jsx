@@ -143,7 +143,7 @@ const ReservaCard = ({ tatuadores }) => {
 
   return (
     <Form style={{ minHeight:"50vh"}} className="formReservaCard">
-      <Form.Group controlId="formTatuadores">
+      <Form.Group controlId="formTatuadores" className="tatuadorBlock">
         <Form.Label>Elige un tatuador:</Form.Label>
         <Form.Control
           as="select"

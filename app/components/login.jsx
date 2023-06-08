@@ -36,10 +36,10 @@ const Login = () => {
             }
         } catch (error) {
             if (error.response.status === 404) {
-                // Usuario no encontrado (DNI/email incorrecto)
+                //No hemos encontrado un usuario con ese Email o DNI
                 setDniEmailError(true);
             } else if (error.response.status === 400) {
-                // Contraseña incorrecta 
+                // Devolvemos esto si la contraseña es incorrecta
                 setPasswordError(true);
             }
         }
@@ -80,7 +80,7 @@ const Login = () => {
                                             value={emailOrDNI}
                                             onChange={handleChange}
                                             required
-                                            autocomplete="off"
+                                            autoComplete="off"
                                             isInvalid={dniEmailError}
                                         />
                                         {dniEmailError && (

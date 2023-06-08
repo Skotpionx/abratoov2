@@ -20,6 +20,7 @@ h2{
     color: black !important;
     background-color: white !important;
     box-shadow: 0px 0px 10px white !important;
+    white-space: break-spaces !important;
 }
 
 h1{

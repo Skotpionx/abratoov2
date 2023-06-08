@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { validateForm } from "../js/validation"
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/register.css'
 
 const Register = ({ setRegistering }) => {
     const router = useRouter();
@@ -107,7 +106,7 @@ const Register = ({ setRegistering }) => {
                             value={formData.nombre}
                             onChange={handleChange}
                             required
-                            autocomplete="off"
+                            autoComplete="off"
                             isInvalid={errors.nombre} 
 
                         />
@@ -121,7 +120,7 @@ const Register = ({ setRegistering }) => {
                             value={formData.edad}
                             onChange={handleChange}
                             required
-                            autocomplete="off"
+                            autoComplete="off"
                             isInvalid={errors.edad} 
                         />
                     <Form.Control.Feedback type="invalid">{errors.edad}</Form.Control.Feedback> 
@@ -136,7 +135,7 @@ const Register = ({ setRegistering }) => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        autocomplete="off"
+                        autoComplete="off"
                         isInvalid={errors.email} 
                     />
                     <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
@@ -148,7 +147,7 @@ const Register = ({ setRegistering }) => {
                         value={formData.dni}
                         onChange={handleChange}
                         required
-                        autocomplete="off"
+                        autoComplete="off"
                         isInvalid={errors.dni} 
                     />
                         <Form.Control.Feedback type="invalid">{errors.dni}</Form.Control.Feedback>
@@ -180,7 +179,7 @@ const Register = ({ setRegistering }) => {
                         name="telefono"
                         value={formData.telefono}
                         onChange={handleChange}
-                        autocomplete="off"
+                        autoComplete="off"
                         isInvalid={errors.telefono} 
                     />
                     <Form.Control.Feedback type="invalid">{errors.telefono}</Form.Control.Feedback>
@@ -193,7 +192,7 @@ const Register = ({ setRegistering }) => {
                         name="direccion"
                         value={formData.direccion}
                         onChange={handleChange}
-                        autocomplete="off"
+                        autoComplete="off"
                         rows={1}
                     />
                     
@@ -204,7 +203,7 @@ const Register = ({ setRegistering }) => {
                     <Form.Control
                         type="text"
                         name="pseudonimo"
-                        autocomplete="off"
+                        autoComplete="off"
                         value={formData.pseudonimo}
                         onChange={handleChange}
                     />

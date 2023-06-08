@@ -13,3 +13,7 @@
 .ms-1{
     font-size: 12px;
 }
+.animation button{
+    box-shadow: 0px 0px 10px white;
+    text-shadow: 0px 0px 4px;
+}

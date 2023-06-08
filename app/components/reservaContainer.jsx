@@ -23,7 +23,7 @@ const ReservaContainer = () => {
 
         }
       }
-      lastScrollTop = st <= 0 ? 0 : st; // Para móviles o negativos
+      lastScrollTop = st <= 0 ? 0 : st; // Para móviles o arriba
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -97,7 +97,7 @@ const ReservaContainer = () => {
               <p
                 className="reservaButton boxShadow "
                 onClick={handleButtonClickReserva}
-                > Click aquí para completar los datos.
+                > Click aquí para rellenar los datos de tu reserva
               </p>    
               </animated.div>
           </animated.div>

@@ -17,6 +17,7 @@ const NavBar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto center">
               <Nav.Link href="/estudio"> 
+              {/* Span's para hacer la animación de recorrido*/}
               <span></span>
               <span></span>
               <span></span>
@@ -73,7 +74,7 @@ const NavBar = () => {
               <span></span>
                 Contacto</Nav.Link>
               <Nav.Link href="/auth">
-                <FontAwesomeIcon icon={faUser} />
+                <FontAwesomeIcon icon={faUser} className="svg-icon"/>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

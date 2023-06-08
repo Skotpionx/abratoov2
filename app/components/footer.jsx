@@ -2,7 +2,7 @@
 import React from 'react'
 import { Container, Row, Col, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram , faTiktok } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/footer.css'
@@ -50,13 +50,13 @@ const Footer = () => {
                                 </Link>
                             </ListGroupItem>
                             <ListGroupItem className="footericons">
-                                <Link href="https://instagram.com/abratoo"> 
-                                <FontAwesomeIcon icon={faInstagram} style={{ color: 'white', width: '20px', height: '20px' }} />Abra_Tattoo
+                                <Link href="https://instagram.com/abratatoo "> 
+                                <FontAwesomeIcon icon={faInstagram} style={{ color: 'white', width: '20px', height: '20px' }} />abratatoo 
                                 </Link>
                             </ListGroupItem>
                             <ListGroupItem className="footericons">
-                                <Link href="https://instagram.com/ju4nm1._"> 
-                                <FontAwesomeIcon icon={faInstagram} style={{ color: 'white', width: '20px', height: '20px' }} /> ©Skt.
+                                <Link href="soultattoogrx"> 
+                                <FontAwesomeIcon icon={faTiktok} style={{ color: 'white', width: '20px', height: '20px' }} /> soultattoogrx
                                 </Link>
                             </ListGroupItem>
                         </ListGroup>

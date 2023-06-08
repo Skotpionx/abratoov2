@@ -13,6 +13,12 @@
   .invalid-feedback{
     display: block !important;
   }
+  .fechaInput{
+    text-align: center
+  }
+  .tatuadorBlock{
+    text-align: center;
+  }
 
   .formReservaCard{
     min-height: 50vh;
@@ -28,6 +34,7 @@
     text-align: center;
     color: white;
     text-shadow: 0px 0px 4px ;
+    margin:auto;
     box-shadow: 0 0 10px #305bc9, 0 0 20px #344196, 0 0 30px #23308f;
   }
   .fechaInput > div > div > input {
@@ -36,6 +43,7 @@
     border-radius: 10px;
     border: 1px solid white;
     text-shadow: 0px 0px 4px ;
+    text-align: center;
     box-shadow: 0 0 10px #305bc9, 0 0 20px #344196, 0 0 30px #23308f;
   }
   .tipoSelect{
