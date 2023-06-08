@@ -264,6 +264,11 @@
   cursor: pointer;
   animation-direction: alternate;
 }
+
+.confirmationReserva:hover {
+  animation: color-change 2s infinite;
+  animation-direction: alternate;
+}
 @keyframes colorChange {
   0% {color: rgb(255,255,255);} /*white */
   5% {color: rgb(251,249,244);}
@@ -291,4 +296,13 @@
 .reservaInterested{
   display:flex;
   justify-content: center;
+}
+@media (max-width: 900px) {
+  .divHeader {
+    flex-direction: column;
+  }
+
+  .divTxt, .neonLineContainer, .reservaContainer {
+    width: 100%;
+  }
 }

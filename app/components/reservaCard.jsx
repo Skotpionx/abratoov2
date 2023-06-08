@@ -139,10 +139,13 @@ const ReservaCard = ({ tatuadores }) => {
           <Form.Control.Feedback type='invalid'>{error.tipo}</Form.Control.Feedback>
         </Form.Group>
       )}
-      <p
-          style={{ cursor: "pointer"}}
-          onClick={handleSubmit}
-          > Crear Reserva </p>
+      {tipo && (
+        <p
+        style={{ cursor: "pointer", marginTop: "5%"}}
+        className="boxShadow confirmationReserva"
+        onClick={handleSubmit}
+        > Crear Reserva </p>
+      )}
     </Form>
   );
 };
