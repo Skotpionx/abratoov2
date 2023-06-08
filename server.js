@@ -32,8 +32,9 @@ app.use(express.json());
 const usersRoute = require("./backend/routes/users.js");
 const adminRoute = require("./backend/routes/admin.js");
 const authRoute = require("./backend/routes/auth.js");
-const postRoute = require("./backend/routes/posts.js")
 const reservaRoute = require("./backend/routes/reserva.js")
+const postRoute = require("./backend/routes/posts.js")
+
 
 
 app.use("/admin", adminRoute);
