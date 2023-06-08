@@ -6,6 +6,7 @@ import { Container, Row, Col, Form, Button, Badge } from 'react-bootstrap'
 import '../styles/authBox.css'
 import '../styles/font.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/login.css'
 
 const Login = () => {
     const router = useRouter();
@@ -53,8 +54,16 @@ const Login = () => {
                 <Container className="auth-form-container">
                     <Row>
                         <Col xs={12} md={6}>
-                            <h1> Abratoo </h1>
+                            <h2> Soul Tatoo Grx </h2>
                             <Badge>  Tu estudio de tatuajes de confianza en granada </Badge>
+
+                            <div className="registerReasons">
+                                <h1> ¿Qué ofrecemos? </h1>
+                                <Badge>  + 20 años de experiencia </Badge> 
+                                <Badge>  + 3000 clientes satisfechos</Badge>
+                                <Badge>  Precios competitivos</Badge>
+                                <h1> ¿A  qué esperas? ¿Te nos unes 😜? </h1>
+                            </div> 
                         </Col>
 
                         <Col xs={12} md={6}>
@@ -71,6 +80,7 @@ const Login = () => {
                                             value={emailOrDNI}
                                             onChange={handleChange}
                                             required
+                                            autocomplete="off"
                                             isInvalid={dniEmailError}
                                         />
                                         {dniEmailError && (
@@ -93,14 +103,16 @@ const Login = () => {
                                             <Form.Control.Feedback type="invalid">Contraseña incorrecta.</Form.Control.Feedback>
                                         )}
                                     </Form.Group>
+                                    <div className="buttonContainer">
+                                        <Button variant="primary" type="submit" className="loginButton">
+                                            Login
+                                        </Button>
 
-                                    <Button variant="primary" type="submit">
-                                        Login
-                                    </Button>
+                                        <Button variant="secondary" onClick={() => setRegistering(true)} className="registerButton ">
+                                            ¿Sin cuenta? Regístrate!
+                                        </Button>
+                                    </div>  
 
-                                    <Button variant="secondary" onClick={() => setRegistering(true)}>
-                                        ¿Sin cuenta? Regístrate!
-                                    </Button>
                                 </Form>
                             )}
 

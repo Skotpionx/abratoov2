@@ -107,6 +107,7 @@ const Register = ({ setRegistering }) => {
                             value={formData.nombre}
                             onChange={handleChange}
                             required
+                            autocomplete="off"
                             isInvalid={errors.nombre} 
 
                         />
@@ -120,6 +121,7 @@ const Register = ({ setRegistering }) => {
                             value={formData.edad}
                             onChange={handleChange}
                             required
+                            autocomplete="off"
                             isInvalid={errors.edad} 
                         />
                     <Form.Control.Feedback type="invalid">{errors.edad}</Form.Control.Feedback> 
@@ -134,6 +136,7 @@ const Register = ({ setRegistering }) => {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        autocomplete="off"
                         isInvalid={errors.email} 
                     />
                     <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
@@ -145,6 +148,7 @@ const Register = ({ setRegistering }) => {
                         value={formData.dni}
                         onChange={handleChange}
                         required
+                        autocomplete="off"
                         isInvalid={errors.dni} 
                     />
                         <Form.Control.Feedback type="invalid">{errors.dni}</Form.Control.Feedback>
@@ -176,6 +180,7 @@ const Register = ({ setRegistering }) => {
                         name="telefono"
                         value={formData.telefono}
                         onChange={handleChange}
+                        autocomplete="off"
                         isInvalid={errors.telefono} 
                     />
                     <Form.Control.Feedback type="invalid">{errors.telefono}</Form.Control.Feedback>
@@ -188,6 +193,7 @@ const Register = ({ setRegistering }) => {
                         name="direccion"
                         value={formData.direccion}
                         onChange={handleChange}
+                        autocomplete="off"
                         rows={1}
                     />
                     
@@ -198,6 +204,7 @@ const Register = ({ setRegistering }) => {
                     <Form.Control
                         type="text"
                         name="pseudonimo"
+                        autocomplete="off"
                         value={formData.pseudonimo}
                         onChange={handleChange}
                     />
@@ -216,12 +223,12 @@ const Register = ({ setRegistering }) => {
 
                 <Form.Group className="row mt-4 mb-4" >
                     <div className="col-md-4">
-                        <Button variant="primary" type="submit" >
+                        <Button variant="primary" type="submit"  className="loginButton">
                             Registrarse
                         </Button>
                     </div>
                     <div className="col-md-8">
-                        <Button variant="secondary" onClick={() => setRegistering(false)}>
+                        <Button variant="secondary" onClick={() => setRegistering(false)} className="registerButton">
                         ¿Ya tienes una cuenta? Logeate!
                         </Button>
                     </div>
