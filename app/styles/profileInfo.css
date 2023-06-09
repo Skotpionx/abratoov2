@@ -3,6 +3,7 @@
     width: 100%;
     gap:20px;
     background-color: black;
+    min-height: 70vh !important;
 }
 .contenedorParcial{
     display: flex;

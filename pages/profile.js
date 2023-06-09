@@ -15,9 +15,7 @@ export default function Profile() {
                 <link rel="icon" href="/favicon.png" />        
             </Head>
             <NavImage />
-            <main className={styles.main} style={{backgroundColor: 'rgb(0, 0, 0) !important',color: 'white !important',textShadow: '0px 0px 4px !important'}}>
                 <ProfileInfo />
-            </main>
             <Footer/>
         </>
     )
