@@ -60,4 +60,5 @@
 .img-recepcion{
   object-fit: cover;
   height:100%;
+  object-position: 20%;
 }

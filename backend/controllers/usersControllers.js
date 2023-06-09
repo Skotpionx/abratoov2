@@ -161,7 +161,7 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json( { message: 'Contraseña incorrecta'});
     }
 
-    const token = jwt.sign({ userId: user._id , admin: user.admin}, process.env.JWT_SECRET)
+    const token = jwt.sign({ userId: user._id , admin: user.admin, esTatuador : user.esTatuador}, process.env.JWT_SECRET)
 
     //Establecemos la cookie con la que vamos a controlar la sesión.
     return res.cookie("access_token", token, {
@@ -200,3 +200,13 @@ exports.logoutUser = (req, res) =>{
     res.status(500).json({ message: "Ha ocurrido un error mientras te deslogeabas." });
   }
 }
+
+exports.getAllUsersName = async (req, res) => {
+  try {
+    const users = await User.find({}, '_id nombre imagenes').lean();
+    res.status(200).json(users);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err });
+  }
+};

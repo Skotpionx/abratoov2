@@ -32,6 +32,11 @@ h1{
     background: none;
     color: white !important;
     text-shadow: 0px 0px 4px; 
+    border: 1px solid white;
+}
+.inputWhite{
+    border:1px solid white !important;
+
 }
 .form-control::placeholder {
     color: white;
@@ -50,6 +55,7 @@ h1{
     display: flex;
     gap: 20px;
     justify-content: center;
+    text-align: center;
 }
 
 .loginButton , .registerButton{

@@ -51,3 +51,20 @@ exports.serverVerifyUser = async (req,res, next) => {
         return res.status(500).json({ message: 'Error interno del servidor', error: error});
     }
 }
+
+exports.verifyTatuador = (req, res, next) => {
+    const { access_token } = req.cookies;
+    if (!access_token) return res.status(401).json({ message: 'Acceso no autorizado' });
+
+    try {
+        const decodedToken = jwt.verify(access_token, process.env.JWT_SECRET);
+        const isTatuador = decodedToken.esTatuador;
+        if (!isTatuador) {
+            return res.status(403).json({ message: 'Acceso prohibido' })
+        }
+
+        next();
+    } catch (error) {
+        return res.status(401).json({ message: 'Acceso no autorizado', error: error })
+    }
+}

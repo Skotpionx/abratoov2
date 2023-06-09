@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { validateForm } from "../js/validation"
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/register.css';
 
 const Register = ({ setRegistering }) => {
     const router = useRouter();
@@ -220,7 +221,7 @@ const Register = ({ setRegistering }) => {
                     <Form.Control.Feedback type="invalid">{errors.image}</Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group className="row mt-4 mb-4" >
+                <Form.Group className="row mt-4 mb-4 buttonContainer" >
                     <div className="col-md-4">
                         <Button variant="primary" type="submit"  className="loginButton">
                             Registrarse

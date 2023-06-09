@@ -51,10 +51,19 @@ exports.getAllTattooArtists = async (req, res) => {
     }
 };
 
-exports.getFreeTimeTattoArtist = async (req ,res ) =>{
+
+exports.getIdTatuadorByUserId = async( req, res) => {
     try{
-        
+        const userIdParam = req.params.userId;
+
+        const tatuador = await Tatuador.findOne({ usuarioId: userIdParam });
+
+        if(!tatuador){
+            res.status(404).json({ message: 'No se encontró ningún tatuador con ese user id.'});
+            return;
+        }
+        res.status(200).json(tatuador._id);
     }catch(error){
-        res.status(500).json( {error: err});
+        res.status(500).json({ error: err });
     }
 }

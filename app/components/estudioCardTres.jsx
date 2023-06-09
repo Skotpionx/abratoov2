@@ -24,16 +24,29 @@ const EstudioCardTres = ( {show } ) => {
             </Col>
             <Col md={6} className="recepcion-content-col">
             <h1 className="recepcion-heading">Tattoo Area</h1>
-            <p>
-            En nuestra área de tatuajes, la experiencia del cliente es primordial. Hemos creado un espacio que combina confort y funcionalidad, garantizando un ambiente relajado y agradable en el que podrás expresar tu personalidad y creatividad con total libertad.
+            <p className="recepcion-paragraph">
+                En nuestra área de tatuajes, <span className="font-weight-bold"> tu experiencia es primordial. </span>   
+                Hemos creado un espacio que combina <span className="font-weight-bold"> confort y funcionalidad, </span>   garantizando un
+                ambiente relajado y agradable.
+            </p>
+            <p className="recepcion-paragraph">
+                Nos enorgullece poder ofrecer una experiencia de <span className="font-weight-bold"> tatuaje de alta calidad  </span> 
+            </p> 
 
-Nuestro estudio está equipado con las máquinas de tatuajes más avanzadas y fiables del mercado. Nos enorgullece poder ofrecer una experiencia de tatuaje de alta calidad que superará tus expectativas, tanto en términos de ejecución como de seguridad.
+            <p className="recepcion-paragraph"> 
+                Nos importa profundamente la higiene y el cuidado de nuestra área de tatuajes.
+                Para ello, mantenemos un alto nivel de limpieza. 
+                Sabemos que un tatuaje es una decisión importante y <span className="font-weight-bold"> queremos que te sientas 
+                seguro y cómodo </span> durante todo el proceso.
+            </p>
 
-Nos importa profundamente la higiene y el cuidado de nuestra área de tatuajes. Para ello, mantenemos el más alto nivel de limpieza y esterilización. Sabemos que un tatuaje es una decisión importante y queremos que te sientas seguro y cómodo durante todo el proceso.
 
-Por último, pero no menos importante, nuestra área de tatuajes es un espacio dedicado al arte y la expresión personal. En ella, nuestros expertos tatuadores trabajan mano a mano con los clientes para dar vida a sus ideas y visiones. Cada tatuaje es una pieza de arte única, y nos satisface enormemente ser parte de esa creación.
-
-¡Te esperamos en nuestra área de tatuajes para comenzar tu viaje artístico personalizado!            </p>
+            <p className="recepcion-paragraph"> 
+                Nuestra área de tatuajes es un
+                <span className="font-weight-bold"> espacio dedicado al arte </span> y la expresión personal.
+                <span className="font-weight-bold"> Cada tatuaje es único </span> , y nos satisface enormemente
+                ser parte de esa creación.
+            </p> 
             </Col>
         </Row>
       </animated.div>

@@ -45,7 +45,6 @@ const ProfileCard = ( {userData, setUserData}) => {
   useEffect(() => {
     if(userData) {
       setLoading(false);
-      console.log(userData);
     }
   }, [userData]);
 
@@ -89,7 +88,6 @@ const ProfileCard = ( {userData, setUserData}) => {
           "esTatuador": true,
         }
         const responseUser = await axios.put(`${API_URL}/admin/users/${userData._id}`, userUpdateData, { withCredentials: true})
-        console.log(responseUser)
       }
   }catch(error){
       console.error(error)

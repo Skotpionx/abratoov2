@@ -4,7 +4,6 @@ import Head from 'next/head'
 
 const Auth = () => {
     return (
-
         <div>
         <Head>
             <title> Login </title>

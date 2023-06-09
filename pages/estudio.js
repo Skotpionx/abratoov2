@@ -15,7 +15,7 @@ const Estudio = () => {
             <link rel="icon" href="/favicon.png" />        
             </Head>
             <NavBar/>
-            <main className="estudio-main">
+            <main className="estudio-main" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'auto', backgroundColor: 'black' }}>
                 <Recepcion/>
             </main>
             <Footer />

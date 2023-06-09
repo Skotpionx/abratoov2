@@ -1,9 +1,11 @@
 'use client'
 import React , {useState, useEffect} from 'react'
 import ProfileCard from './profileCard';
+import ViewReservaCard from './viewReservaCard';
 import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import Loading from './loading';
+import '../styles/ProfileInfo.css'
 import axios from 'axios';
 
 const ProfileInfo = () => {
@@ -42,9 +44,9 @@ const ProfileInfo = () => {
     };
     // Si el usuario está logueado, muestra la información del perfil
     return (
-        <div style={{ display: 'flex', width: '80%', margin: '0 auto' }}>
-        <div style={{ flex: '30%' , justifyContent:'right', display:'flex'}}>
-          <Box display="flex" flexDirection="column" alignItems="center" bgcolor="#ffffff" p={2} borderRadius="15px"  maxHeight="340px" justifyContent="space-evenly" >
+        <div className='contenedorGlobal'>
+        <div className='contenedorParcial'>
+          <Box  p={2} className="boxContainer">
             <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('perfil')} style={{ cursor: 'pointer' }}>
               Mi Perfil
             </Typography>
@@ -63,12 +65,12 @@ const ProfileInfo = () => {
           </Box>
         </div>
   
-        <div style={{ flex: '70%' }}>
-          {activeLink === 'perfil' && <ProfileCard userData={userData}  />}
-          {/* {activeLink === 'reservas' && <ProfileCard />}
-          {activeLink === 'sesion' && <ProfileCard />}
+        <div className="componenteContainer">
+          {activeLink === 'perfil' && <ProfileCard userData={userData} setUserData={setUserData}  />}
+          {activeLink === 'reservas' && <ViewReservaCard userData={userData} />}
+          {/* {activeLink === 'sesion' && <ProfileCard />}
           {activeLink === 'posts' && <ProfileCard />}
-          {activeLink === 'tatuador' && <ProfileCard />} */}
+          {activeLink === 'tatuador' && <ProfileCard />}  */}
         </div>
 
           <style jsx>{`

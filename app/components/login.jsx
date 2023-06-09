@@ -80,6 +80,7 @@ const Login = () => {
                                             value={emailOrDNI}
                                             onChange={handleChange}
                                             required
+                                            className="inputWhite"
                                             autoComplete="off"
                                             isInvalid={dniEmailError}
                                         />
@@ -97,6 +98,7 @@ const Login = () => {
                                             value={password}
                                             onChange={handleChange}
                                             required
+                                            className="inputWhite"
                                             isInvalid={passwordError}
                                         />
                                         {passwordError && (
@@ -104,11 +106,11 @@ const Login = () => {
                                         )}
                                     </Form.Group>
                                     <div className="buttonContainer">
-                                        <Button variant="primary" type="submit" className="loginButton">
+                                        <Button variant="primary" type="submit" className="loginButton ">
                                             Login
                                         </Button>
 
-                                        <Button variant="secondary" onClick={() => setRegistering(true)} className="registerButton ">
+                                        <Button variant="secondary" onClick={() => setRegistering(true)} className="registerButton">
                                             ¿Sin cuenta? Regístrate!
                                         </Button>
                                     </div>  

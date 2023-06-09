@@ -1,0 +1,24 @@
+.contenedorGlobal{
+    display: flex; 
+    width: 100%;
+    gap:20px;
+    background-color: black;
+}
+.contenedorParcial{
+    display: flex;
+    justify-content: center;
+}
+.boxContainer{
+    display: flex ;
+    flex-direction: column;
+    align-items: center ;
+    background-color: #000000;
+    border-radius: 15px  ;
+    max-height: 340px ;
+    justify-content: space-evenly;
+    color: white;
+}
+.componenteContainer{
+    width:100%;
+    background-color: black;
+}
