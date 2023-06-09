@@ -5,7 +5,7 @@ import ViewReservaCard from './viewReservaCard';
 import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import Loading from './loading';
-import '../styles/ProfileInfo.css'
+import '../styles/profileInfo.css'
 import axios from 'axios';
 
 const ProfileInfo = () => {

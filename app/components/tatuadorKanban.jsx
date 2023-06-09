@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import Column from './Column';
+import Column from './column';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/kanban.css"
