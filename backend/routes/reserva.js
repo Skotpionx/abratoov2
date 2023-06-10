@@ -24,7 +24,13 @@ router.get('/getReservas/:idTatuador', verifyTatuador, getReservaByIDTatuadorCom
 
 router.get('/getIDTatuador/:idUsuario', verifyTatuador, getIdTatuadorByUserId)
 
-router.put('/moverReserva/:idReserva', verifyTatuador, MoveReserva)
+router.put('/moverReserva/:idReserva', verifyTatuador, MoveReserva);
+
+router.put('/moverReservaCancelada/:idReserva', serverVerifyUser, MoveReserva);
+
+
+
+
 
 router.put('/editReserva/:idReserva', verifyTatuador, editReserva);
 module.exports = router;

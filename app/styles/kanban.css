@@ -36,6 +36,8 @@
 .boardContainer .kanban:nth-child(1) .columnasContainer  .userInfo > span{
     color: black;
     background-color: #ffe9b0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
 }
 
 
@@ -52,6 +54,8 @@
 .boardContainer .kanban:nth-child(2) .columnasContainer   .userInfo > span{
     color: black;
     background-color: #8990d8 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
 }
 
 .boardContainer .kanban:nth-child(3) h4{
@@ -67,6 +71,8 @@
 .boardContainer .kanban:nth-child(3) .columnasContainer   .userInfo > span{
     color: black;
     background-color: #8fd69e !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
 }
 
 .boardContainer .kanban:nth-child(4) h4{
@@ -80,7 +86,22 @@
 .boardContainer .kanban:nth-child(4) .columnasContainer   .userInfo > span{
     color: black;
     background-color: #ef5a5a !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
 }
-
-
-
+@media (max-width: 1050px) {
+    .boardContainer{
+        flex-flow: row wrap;
+    }
+    .kanban {
+      width: 45%;
+    }
+}
+@media (max-width: 700px) {
+    .boardContainer{
+        flex-flow: row wrap;
+    }
+    .kanban {
+      width: 100%;
+    }
+}

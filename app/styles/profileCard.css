@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Cascadia Code';
+    src: url(../../fonts/CascadiaCode.ttf);
+}
+
+*{
+    font-family: 'Cascadia Code !important';
+}
+
+
+.containerGrid{
+    background-color: black;
+    display:flex;
+    overflow:auto;
+}
+
+.inputContainer{
+    color: #ffd65f;
+}
+p{
+    color: black;
+}
+div , p , button , input{
+    font-family: 'Cascadia Code' !important
+}

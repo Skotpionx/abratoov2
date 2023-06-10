@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import '../styles/column.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Column = ({ column }) => {
+const Column = ({ column , esTatuador}) => {
   const [editingItem, setEditingItem] = useState(null);
   const [userMap, setUserMap] = useState(new Map());
   const [imageMap, setImageMap] = useState(new Map());
@@ -78,7 +78,6 @@ const Column = ({ column }) => {
       ? new Date(selectedDateTime.getTime() + selectedDateTime.getTimezoneOffset() * 60000 + 2 * 60 * 60 * 1000) // Add 2 hours in milliseconds
       : originalValues.date;
 
-    // Intenta realizar la llamada a la API para actualizar la reserva
     try {
       const API_URL = process.env.NEXT_PUBLIC_API_URL;
       const response = await axios.put(`${API_URL}/reserva/editReserva/${editingItem}`, updatedFields , {withCredentials: true });
@@ -98,7 +97,8 @@ const Column = ({ column }) => {
     const fetchUsers = async () => {
       try {
         const API_URL = process.env.NEXT_PUBLIC_API_URL;
-        const response = await axios.get(`${API_URL}/users/usersName`, { withCredentials: true });
+        const userType = esTatuador ? '/users/usersName' : '/users/tatuadores'; 
+        const response = await axios.get(`${API_URL}${userType}`, { withCredentials: true });
         const users = response.data;
         const map = new Map();
         const imageMap = new Map();
@@ -115,7 +115,7 @@ const Column = ({ column }) => {
     };
 
     fetchUsers();
-  }, []);
+  }, [esTatuador]);
 
   return (
     <div className="columnasContainer">
@@ -123,6 +123,7 @@ const Column = ({ column }) => {
         return (
           <Draggable key={item._id} draggableId={item._id} index={index}>
             {(provided) => {
+
               return (
                 <div
                   className="kanbanIssuesContainer"
@@ -130,7 +131,8 @@ const Column = ({ column }) => {
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
                 >
-                  <div onDoubleClick={() => {
+                <div onDoubleClick={() => {
+                  if (esTatuador) { //Comprobamos si es tatuador o no 
                     setEditingItem(item._id);
                     setUserId(item.idUsuario);
                     setReservationType(item.tipo);
@@ -140,7 +142,8 @@ const Column = ({ column }) => {
                       tipo: item.tipo,
                       date: new Date(item.fecha),
                     });
-                  }}>
+                  }
+                }}>
                     {editingItem === item._id ? (
                       <Form onSubmit={handleFormSubmit}>
                         <Typography variant="h6">Editar Reserva</Typography>

@@ -7,6 +7,8 @@ import axios from 'axios';
 import Image from 'next/image'
 import Loading from './loading';
 import ProfileView from './profileView';
+import '../styles/profileCard.css'
+import '../styles/font.css'
 
 const StyledCard = styled(Card)({
   borderRadius: '15px',
@@ -113,9 +115,9 @@ const ProfileCard = ( {userData, setUserData}) => {
 
 
   return (
-    <div className="vh-100 w-100" style={{ backgroundColor: '#C5DBF5', display:'flex', overflow:'auto'  }}>
-      <Grid container justifyContent="center">
-        <Grid item md={12} lg={7} xl={8}>
+    <div className="vh-100 w-100 containerGrid" >
+      <Grid container justifyContent="center" >
+        <Grid item md={12} lg={7} xl={8} className="gridCardContainer">
           <StyledCard>
             <CardContent>
               <Grid container spacing={3}>
@@ -129,7 +131,7 @@ const ProfileCard = ( {userData, setUserData}) => {
                 </Grid>
                 <Grid item xs={12} sm container>
                   <Grid item xs container direction="column" spacing={2}>
-                    <Grid item xs>
+                    <Grid item xs className="inputContainer">
                       {editMode ? (
                         <> 
                         <TextField
@@ -200,24 +202,16 @@ const ProfileCard = ( {userData, setUserData}) => {
                         />
                         </form>
                       ): (
-                        deleteMode ? (
-                          <TextField
-                          label="ESCRIBE 'ESTOY SEGURO' PARA ELIMINAR DEFINITIVAMENTE TU CUENTA (ESTO NO TIENE VUELTA ATRÁS)"
-                          defaultValue={''}
-                          /> 
-                        ) : (
                           <ProfileView userData={userData} />
                         )
-                      )
                     }
                       </StatContainer>
                     </Grid>
                     <Grid item>
                       <StyledButton variant="outlined" onClick={handleEditClick}> Editar </StyledButton>
                       { editMode  && <StyledButton variant="contained" color="primary" onClick={handleUpdateClick}> Actualizar </StyledButton> }
-                      { !editMode && !deleteMode && <DeleteButton variant="contained" color="secondary" onClick={handleDeleteClick}> Borrar Cuenta! </DeleteButton> }
                       <StyledButton variant="outlined" onClick={handleLogoutClick}> Cerrar sesión </StyledButton>
-                      <StyledButton variant="outlined" onClick={handleCrearTatuador}> Crear tatuador </StyledButton>
+                      {/* <StyledButton variant="outlined" onClick={handleCrearTatuador}> Crear tatuador </StyledButton> */}
                     </Grid>
                   </Grid>
                 </Grid>

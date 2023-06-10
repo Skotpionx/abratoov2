@@ -53,9 +53,8 @@ const ProfileInfo = () => {
             <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('reservas')} style={{ cursor: 'pointer' }}>
               Mis Reservas
             </Typography>
-            <Typography variant="h6" component="div" align="center" onClick={() => handleLinkClick('sesion')} style={{ cursor: 'pointer' }}>
-              Sesión
-            </Typography>
+
+
             <Typography variant="h6" component="div" align="center" onClick={() => handleLinkClick('posts')} style={{ cursor: 'pointer' }}>
               Posts
             </Typography>
@@ -68,9 +67,8 @@ const ProfileInfo = () => {
         <div className="componenteContainer">
           {activeLink === 'perfil' && <ProfileCard userData={userData} setUserData={setUserData}  />}
           {activeLink === 'reservas' && <ViewReservaCard userData={userData} />}
-          {/* {activeLink === 'sesion' && <ProfileCard />}
           {activeLink === 'posts' && <ProfileCard />}
-          {activeLink === 'tatuador' && <ProfileCard />}  */}
+          {activeLink === 'tatuador' && <ProfileCard />}  
         </div>
 
           <style jsx>{`

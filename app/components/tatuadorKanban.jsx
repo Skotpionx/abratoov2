@@ -5,7 +5,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/kanban.css"
 
-const TatuadorKanban = ({ reservas }) => {
+const TatuadorKanban = ({ reservas , esTatuador}) => {
   const [columns, setColumns] = useState({
     "Pendiente de Aprobación": { name: "Pendiente de Aprobación", items: [] },
     "Aceptadas": { name: "Aceptadas", items: [] },
@@ -56,6 +56,10 @@ const TatuadorKanban = ({ reservas }) => {
         const endColumn = columns[destination.droppableId];
         const newEndItems = [...endColumn.items];
 
+      if (!esTatuador && destination.droppableId !== "Canceladas") {
+        return;
+      }
+
         newEndItems.splice(destination.index, 0, removedItem);
         const newStartColumn = {
             ...startColumn,
@@ -71,11 +75,12 @@ const TatuadorKanban = ({ reservas }) => {
             [newStartColumn.name]: newStartColumn,
             [newEndColumn.name]: newEndColumn,
         });
-        const endStateName = Object.entries(columns).find(([id, column]) => id === destination.droppableId)[1].name;
+        const endStateName = Object.entries(columns).find(([id]) => id === destination.droppableId)[1].name;
         try{
           const API_URL = process.env.NEXT_PUBLIC_API_URL;
-          const response = await axios.put(`${API_URL}/reserva/moverReserva/${removedItem._id}`, { estado: endStateName } , {withCredentials: true });
-          console.log(response.data)
+          const path = esTatuador ? '/reserva/moverReserva/' : '/reserva/moverReservaCancelada/';
+          const response = await axios.put(`${API_URL}${path}${removedItem._id}`, { estado: endStateName } , {withCredentials: true });
+          console.log(response.data);
         }catch(error){
           console.error(error);
         }
@@ -104,7 +109,7 @@ const TatuadorKanban = ({ reservas }) => {
                     className='kanban'
                   >
                     <h4>{column.name}</h4>
-                    <Column column={column} />
+                    <Column column={column} esTatuador={esTatuador}/>
                     {provided.placeholder}
                   </div>
                 );

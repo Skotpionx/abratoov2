@@ -38,12 +38,10 @@ const ViewReservaCard = ({ userData }) => {
   return (
     <div>
       {userReserva && (
-        userReserva.map((reserva) => (
-          <p key={reserva._id}> Aquí {new Date(reserva.fecha).toLocaleString()} </p>
-        ))
+          <TatuadorKanban reservas={userReserva}  esTatuador={userData.esTatuador} />
       )}
       {userData.esTatuador && tatuadorReserva && (
-        <TatuadorKanban reservas={tatuadorReserva} />
+        <TatuadorKanban reservas={tatuadorReserva}  esTatuador={userData.esTatuador} />
       )}
     </div>
   );

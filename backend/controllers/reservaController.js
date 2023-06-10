@@ -11,6 +11,14 @@ exports.createReserva = async (req , res) =>{
         if (!(idTatuador && fecha && tipo)) {
             return res.status(400).json({ message: 'Faltan campos requeridos.' });
         }
+
+            // Validar si la fecha es sábado o domingo
+          const day = new Date(fecha).getDay();
+          if (day === 0 || day === 6) {
+            return res.status(410).json({ message: 'No se permite reservar en sábado o domingo.' });
+          }
+
+
         const decoded = jwt.verify(access_token, process.env.JWT_SECRET);
 
         const nuevaReserva = new Reserva({
@@ -138,3 +146,4 @@ exports.editReserva = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor', error: error });
   }
 };
+

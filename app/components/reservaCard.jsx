@@ -60,6 +60,12 @@ const ReservaCard = ({ tatuadores }) => {
                 fecha: 'Ya hay una reserva para esa hora',
               }))
             }
+            else if( error.response.status === 410){
+              setError(prevErrors => ({
+                ...prevErrors,
+                fecha: 'No se permite reservar en sábado ni en domingo.',
+              }))
+            }
           }
         }    
       }
