@@ -5,7 +5,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/kanban.css"
 
-const TatuadorKanban = ({ reservas , esTatuador}) => {
+const TatuadorKanban = ({ reservas , esTatuador }) => {
   const [columns, setColumns] = useState({
     "Pendiente de Aprobación": { name: "Pendiente de Aprobación", items: [] },
     "Aceptadas": { name: "Aceptadas", items: [] },
@@ -78,9 +78,8 @@ const TatuadorKanban = ({ reservas , esTatuador}) => {
         const endStateName = Object.entries(columns).find(([id]) => id === destination.droppableId)[1].name;
         try{
           const API_URL = process.env.NEXT_PUBLIC_API_URL;
-          const path = esTatuador ? '/reserva/moverReserva/' : '/reserva/moverReservaCancelada/';
+          const path = esTatuador  ? '/reserva/moverReserva/' : '/reserva/moverReservaCancelada/';
           const response = await axios.put(`${API_URL}${path}${removedItem._id}`, { estado: endStateName } , {withCredentials: true });
-          console.log(response.data);
         }catch(error){
           console.error(error);
         }
@@ -109,7 +108,7 @@ const TatuadorKanban = ({ reservas , esTatuador}) => {
                     className='kanban'
                   >
                     <h4>{column.name}</h4>
-                    <Column column={column} esTatuador={esTatuador}/>
+                    <Column column={column} esTatuador={esTatuador} />
                     {provided.placeholder}
                   </div>
                 );

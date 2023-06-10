@@ -4,11 +4,10 @@ const User = require("../models/userModel")
 
 exports.createTatuador = async (req, res) => {
     try {
-        const { access_token } = req.cookies;
-        const decoded = jwt.verify(access_token, process.env.JWT_SECRET);
+          const userId = req.params.idUsuario;
 
         const tatuador = new Tatuador({
-            idUsuario: decoded.userId,
+            idUsuario: userId,
             ...req.body
         });
 
@@ -26,14 +25,13 @@ exports.getAllTattooArtists = async (req, res) => {
     try {
       // Obtener todos los tatuadores de la base de datos
     const tattooArtists = await Tatuador.find().lean();
-
       // Obtener información adicional de los usuarios asociados a cada tatuador
     const tattooArtistsWithUserInfo = await Promise.all(
         tattooArtists.map(async (tattooArtist) => {
             const { idUsuario, experiencia } = tattooArtist;
             const user = await User.findById(idUsuario).lean();
             const { _id, pseudonimo, imagenes, nombre } = user;
-        return {
+        return {    
             idTatuador: tattooArtist._id,
             idUsuario: _id,
             experiencia,
@@ -72,7 +70,7 @@ exports.updateTatuador = async (req, res) => {
     const updates = req.body;
     try {
       const updatedTatuador = await Tatuador.findByIdAndUpdate(req.params.id, updates, { new: true });
-      if (!updatedTatuador) return res.status(404).json({ error: 'Tatuador not found' });
+      if (!updatedTatuador) return res.status(404).json({ error: 'No se ha encontrado el tatuador' });
       res.status(200).json(updatedTatuador);
     } catch (err) {
       res.status(500).json({ error: err });
@@ -82,18 +80,20 @@ exports.updateTatuador = async (req, res) => {
   
   exports.deshacerTatuador = async (req, res) => {
     try {
+      const idUsuarioDelete = req.params.id;
       // Buscar el tatuador
-      const tatuador = await Tatuador.findById(req.params.id);
-      if (!tatuador) return res.status(404).json({ error: 'Tatuador not found' });
+      const tatuador = await Tatuador.findOne({idUsuario: idUsuarioDelete});
+
+      if (!tatuador) return res.status(404).json({ error: 'No se ha encontrado el tatuador' });
   
       // Actualizar el usuario correspondiente y establecer esTatuador a false
-      const user = await User.findByIdAndUpdate(tatuador.idUsuario, { esTatuador: false }, { new: true });
+      const user = await User.findByIdAndUpdate(idUsuarioDelete, { esTatuador: false }, { new: true });
       if (!user) return res.status(404).json({ error: 'User not found' });
   
       // Eliminar el tatuador
-      await Tatuador.findByIdAndDelete(req.params.id);
+      await Tatuador.findByIdAndDelete(tatuador._id);
   
-      res.status(200).json({ message: 'User is no longer a tattoo artist.' });
+      res.status(200).json({ message: 'Ya no eres un artista :( ' });
     } catch (err) {
       res.status(500).json({ error: err });
     }

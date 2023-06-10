@@ -4,7 +4,7 @@
     padding: 20px;
   }
   .estudio-main{
-    overflow:hidden;
+    overflow:hidden !important;
   }
   .recepcion-row {
     margin-bottom: 20px;

@@ -7,10 +7,11 @@ const {getAllUsersName} = require("../controllers/usersControllers")
 
 router.get('/profile',serverVerifyUser, getOwnProfile);
 router.put('/updateProfile', serverVerifyUser, updateOwnProfile);
-router.post('/tatuadores', verifyAdmin, createTatuador );
+router.post('/tatuadores/:idUsuario', verifyAdmin, createTatuador );
 router.get('/tatuadores', getAllTattooArtists);
 router.get('/usersName', serverVerifyUser, getAllUsersName);
 router.get('/getTatuadorInfo', serverVerifyUser, getIdTatuadorByUserIdAll)
+
 
 
 module.exports = router;

@@ -9,9 +9,8 @@ const ViewReservaCard = ({ userData }) => {
   const [userReserva, setuserReserva] = useState(null);
   const [tatuadorReserva, setTatuadorReserva] = useState(null);
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-  useEffect(() => {
-    if (!userData.esTatuador) {
+  useEffect(() => { 
+   if (!userData.esTatuador) {
       const obtenerReservas = async () => {
         try {
           const response = await axios.get(`${API_URL}/reserva/obtenerReservaPorUsuario/${userData._id}`, { withCredentials: true });

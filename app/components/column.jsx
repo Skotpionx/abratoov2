@@ -116,7 +116,6 @@ const Column = ({ column , esTatuador}) => {
         }
         setUserMap(map);
         setImageMap(imageMap);
-        console.log();
       } catch (error) {
         console.error(error);
       }

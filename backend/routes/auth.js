@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { createUser , loginUser , uploadImage , logoutUser } = require("../controllers/usersControllers")
-const { isLogged  , verifyUser, clientVerifyUser, serverVerifyUser} = require("../controllers/sessionControllers")
+const { clientVerifyUser, serverVerifyUser} = require("../controllers/sessionControllers")
 
 
 router.get('/status', clientVerifyUser);

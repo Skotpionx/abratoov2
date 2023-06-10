@@ -7,7 +7,6 @@ exports.createReserva = async (req , res) =>{
         const { access_token } = req.cookies;
 
         const { idTatuador, fecha, tipo } = req.body;
-
         if (!(idTatuador && fecha && tipo)) {
             return res.status(400).json({ message: 'Faltan campos requeridos.' });
         }
@@ -17,6 +16,13 @@ exports.createReserva = async (req , res) =>{
           if (day === 0 || day === 6) {
             return res.status(410).json({ message: 'No se permite reservar en sábado o domingo.' });
           }
+
+          // Validar si la hora está entre las 00 y las 8 , son 2 menos ya que mongo las trae asi
+          const hour = new Date(fecha).getHours();
+          if (hour >= 22 || hour < 6) {
+            return res.status(420).json({ message: 'No se permite reservar en el horario de 00 a 08:00.' });
+          }
+
 
 
         const decoded = jwt.verify(access_token, process.env.JWT_SECRET);
@@ -55,7 +61,7 @@ exports.getReservaByIDTatuadorCompleta = async (req, res) => {
       idTatuador: idTatuador,
       fecha: { $gt: currentDate } // Las pasadas no.
     })
-    .sort({ fecha: 1 }); // Ordenar por fecha de más antigua a más nueva
+    .sort({ fecha: -1 }); // Ordenar por fecha de más antigua a más nueva, asi te muestra primero las que tienes que hacer
       
       res.json(reservas);
   } catch(error) {
@@ -147,3 +153,11 @@ exports.editReserva = async (req, res) => {
   }
 };
 
+exports.getAllReservas = async (req,res) => {
+  try{
+      const getAllReservas = await Reserva.find().sort({ fecha: -1 });
+      res.status(200).json(getAllReservas);
+  }catch(error){
+    res.status(500).json({ message: 'Error interno del servidor', error: error});
+  }
+}

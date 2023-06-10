@@ -12,7 +12,7 @@ exports.getOwnProfile = async (req, res) => {
 
         // Buscamos el usuario por id
         const user = await User.findOne({ _id: decodedToken.userId })
-            .select('nombre edad email dni telefono direccion pseudonimo imagenes esTatuador');
+            .select('nombre edad email dni telefono direccion pseudonimo imagenes esTatuador admin');
 
         if (!user) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
@@ -76,3 +76,30 @@ exports.updateOwnProfile = async (req ,res ) => {
         return res.status(500).json({ message: 'Error interno del servidor'});
     }
 }
+
+exports.updateUserProfile = async (req, res) => {
+    try {
+      const { userId } = req.params;
+      const updatedData = req.body;
+  
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      user.nombre = updatedData.nombre || user.nombre;
+      user.pseudonimo = updatedData.pseudonimo || user.pseudonimo;
+      user.direccion = updatedData.direccion || user.direccion;
+      user.dni = updatedData.dni || user.dni;
+      user.edad = updatedData.edad || user.edad;
+      user.email = updatedData.email || user.email;
+      user.telefono = updatedData.telefono || user.telefono;
+  
+      const updatedUser = await user.save();
+  
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  };
+  

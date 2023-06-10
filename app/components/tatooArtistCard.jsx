@@ -16,7 +16,7 @@ const TatooArtistCard = ( { src, name, alias, experiencia, ubicacion }) => {
               <Grid container spacing={3}>
                 <Grid item className="image-container-perfil" >
                   <Image
-                    src={src}
+                    src={src || '/minion.png'}
                     alt="Imagen de perfil"
                     width={150}   
                     height={150}  

@@ -26,23 +26,35 @@ const StyledButton = styled(Button)({
   margin: '0 5px',
 });
 
-const DeleteButton = styled(Button)({
-  flexGrow: 1,
-  margin: '0 5px',
-  backgroundColor: 'red',
-  '&:hover': {
-    backgroundColor: 'darkred',
-  },
-})
 
-const ProfileCard = ( {userData, setUserData}) => {
+const ProfileCard = ( {userData, setUserData }) => {
   const router = useRouter();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const [loading, setLoading] = useState(true);
   const [editMode, setEditMode] = useState(false);
-  const [deleteMode, setDeleteMode] = useState(false);
   const [updatedData, setUpdatedData] = useState({});
+  const [ageError, setAgeError] = useState('');
+const [passwordError, setPasswordError] = useState('');
 
+const validateAge = (value) => {
+  if (value < 15) {
+    setAgeError('La edad debe ser mayor o igual a 15');
+    return false;
+  } else {
+    setAgeError('');
+    return true;
+  }
+};
+
+const validatePasswords = (currentPassword, newPassword) => {
+  if ((currentPassword && !newPassword) || (!currentPassword && newPassword)) {
+    setPasswordError('Debe proporcionar ambas contraseñas o ninguna');
+    return false;
+  } else {
+    setPasswordError('');
+    return true;
+  }
+};
 
   useEffect(() => {
     if(userData) {
@@ -56,45 +68,27 @@ const ProfileCard = ( {userData, setUserData}) => {
   const imageUrl = userData.imagenes[0];
   const handleUpdateClick = async () => {
     try{
-      //Con este response luego actualizamos los datos del formulario con response.data setUserData(response.data);
+      const isAgeValid = validateAge(updatedData.edad);
+      const arePasswordsValid = validatePasswords(updatedData.passwordActual, updatedData.passwordNueva);
+      if(isAgeValid && arePasswordsValid){
+        //Con este response luego actualizamos los datos del formulario con response.data setUserData(response.data);
         const response= await axios.put(`${API_URL}/users/updateProfile/`, updatedData, { withCredentials: true});
         //Establecemos en el formulario los nuevos datos. password no viene asi que no rayarse, no se pone en undefined :S , todo calculado
         setUserData(response.data);
         //setEditMode a false para mostrar los nuevos datos actualizados. 
         setEditMode(false);
+      }
     }catch (error){
-      console.error(error);
+      if (error.response && error.response.status === 403) {
+        setPasswordError('Contraseña Actual Incorrecta');
+      }
     }
-  };
-  const handleDeleteClick = async () => {
-    setDeleteMode((prevDeleteMode) => !prevDeleteMode);
   };
 
   const handleEditClick = () => {
     setEditMode((prevEditMode) => !prevEditMode);
   }
 
-  const handleCrearTatuador = async ()  =>{
-    try{
-      //NO HACEMOS VERIFICACIÓN DE SI YA ES TATUADOR MAS QUE NO MOSTRAR EL BOTÓN, DEBIDO A QUE ESE USERID ES UNA REFERENCIA Y MONGO NO DEJA CREAR MÁS DE UNO.
-      // ESE ERROR NOS LO AHORRAMOS (LO GESTIONA MONGO)
-        const API_URL = process.env.NEXT_PUBLIC_API_URL
-        const tatuadorData = {
-            "valoracionMedia": 0,
-            "experiencia": 0,
-            "ubicacion": "",
-      };
-      const response = await axios.post(`${API_URL}/users/tatuadores`, tatuadorData, { withCredentials: true})
-      if(response.status === 201){
-        const userUpdateData = {
-          "esTatuador": true,
-        }
-        const responseUser = await axios.put(`${API_URL}/admin/users/${userData._id}`, userUpdateData, { withCredentials: true})
-      }
-  }catch(error){
-      console.error(error)
-    }
-  }
 
   const handleLogoutClick = async() => {
     try{
@@ -170,6 +164,9 @@ const ProfileCard = ( {userData, setUserData}) => {
                           label="Edad"
                           defaultValue={userData.edad}
                           onChange={(e) => setUpdatedData({ ...updatedData, edad: e.target.value })}
+                          error={Boolean(ageError)}
+                          helperText={ageError}
+                          onBlur={(e) => validateAge(e.target.value)}
                           style={{margin:'1%'}}
                         />
                         <TextField
@@ -189,6 +186,8 @@ const ProfileCard = ( {userData, setUserData}) => {
                           type="password"
                           defaultValue=''
                           autoComplete="current-password" 
+                          error={Boolean(passwordError)}
+                          helperText={passwordError}
                           onChange={(e) => setUpdatedData({ ...updatedData, passwordActual: e.target.value })}
                           style={{margin:'1%'}}
                         />
@@ -198,6 +197,7 @@ const ProfileCard = ( {userData, setUserData}) => {
                           defaultValue=''
                           autoComplete="new-password"
                           onChange={(e) => setUpdatedData({ ...updatedData, passwordNueva: e.target.value })}
+                          onBlur={(e) => validatePasswords(updatedData.passwordActual, e.target.value)}
                           style={{margin:'1%'}}
                         />
                         </form>
