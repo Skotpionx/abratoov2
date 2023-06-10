@@ -3,6 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/font.css';
 import TatuadorKanban from "./tatuadorKanban"
+import "../styles/viewReservaCard.css"
 
 const ViewReservaCard = ({ userData }) => {
   const [userReserva, setuserReserva] = useState(null);
@@ -36,14 +37,17 @@ const ViewReservaCard = ({ userData }) => {
   }, []);
 
   return (
-    <div>
-      {userReserva && (
-          <TatuadorKanban reservas={userReserva}  esTatuador={userData.esTatuador} />
-      )}
-      {userData.esTatuador && tatuadorReserva && (
-        <TatuadorKanban reservas={tatuadorReserva}  esTatuador={userData.esTatuador} />
-      )}
-    </div>
+        <div>
+            {userReserva && (
+              <>
+                <p className="userDataInformation"> Puedes cancelar las reservas moviéndolas a "Cancelada", este proceso no tiene vuelta atrás. </p>
+                <TatuadorKanban reservas={userReserva}  esTatuador={userData.esTatuador} />
+              </>
+            )}
+            {userData.esTatuador && tatuadorReserva && (
+              <TatuadorKanban reservas={tatuadorReserva}  esTatuador={userData.esTatuador} />
+            )}
+        </div>
   );
 };
 

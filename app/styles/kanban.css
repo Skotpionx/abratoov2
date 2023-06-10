@@ -27,7 +27,7 @@
 
 .boardContainer .kanban:nth-child(1) h4{
     color: #ffe9b0;
-    font-size: 23px;
+    font-size: 23px !important;
 }
 .boardContainer .kanban:nth-child(1) .columnasContainer  > div{
     border:0px;
@@ -95,7 +95,7 @@
         flex-flow: row wrap;
     }
     .kanban {
-      width: 45%;
+        width: 45%;
     }
 }
 @media (max-width: 700px) {
@@ -103,6 +103,6 @@
         flex-flow: row wrap;
     }
     .kanban {
-      width: 100%;
+        width: 100%;
     }
 }

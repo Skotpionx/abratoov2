@@ -102,13 +102,21 @@ const Column = ({ column , esTatuador}) => {
         const users = response.data;
         const map = new Map();
         const imageMap = new Map();
-        users.forEach(user => {
-          map.set(user._id, user.nombre);
-          imageMap.set(user._id, user.imagenes[0]);
-        });
-
+        if(!esTatuador){
+          users.forEach(user => {
+            map.set(user.idTatuador, user.nombre);
+            imageMap.set(user.idTatuador, user.imagenes[0]);
+          });
+        }
+        else{
+          users.forEach(user => {
+            map.set(user._id, user.nombre);
+            imageMap.set(user._id, user.imagenes[0]);
+          });
+        }
         setUserMap(map);
         setImageMap(imageMap);
+        console.log();
       } catch (error) {
         console.error(error);
       }
@@ -123,7 +131,6 @@ const Column = ({ column , esTatuador}) => {
         return (
           <Draggable key={item._id} draggableId={item._id} index={index}>
             {(provided) => {
-
               return (
                 <div
                   className="kanbanIssuesContainer"
@@ -144,7 +151,7 @@ const Column = ({ column , esTatuador}) => {
                     });
                   }
                 }}>
-                    {editingItem === item._id ? (
+                    {editingItem === item._id  ? (
                       <Form onSubmit={handleFormSubmit}>
                         <Typography variant="h6">Editar Reserva</Typography>
                         <Form.Group>
@@ -187,8 +194,8 @@ const Column = ({ column , esTatuador}) => {
                     ) : (
                       <>
                         <div className="userInfo"> 
-                          <Badge> {userMap.get(item.idUsuario)} </Badge>
-                          <img src={imageMap.get(item.idUsuario)} alt="User Image" style={{ width: '50px', height: '50px' }} />
+                          <Badge>{userMap.get(item.idUsuario ? item.idUsuario : item.idTatuador)}</Badge>
+                          <img src={imageMap.get(item.idUsuario ? item.idUsuario : item.idTatuador)} alt="User Image" style={{ width: '50px', height: '50px' }} />
                         </div>
 
                         <div className="issueReservaInfo">

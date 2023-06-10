@@ -67,3 +67,34 @@ exports.getIdTatuadorByUserId = async( req, res) => {
         res.status(500).json({ error: err });
     }
 }
+
+exports.updateTatuador = async (req, res) => {
+    const updates = req.body;
+    try {
+      const updatedTatuador = await Tatuador.findByIdAndUpdate(req.params.id, updates, { new: true });
+      if (!updatedTatuador) return res.status(404).json({ error: 'Tatuador not found' });
+      res.status(200).json(updatedTatuador);
+    } catch (err) {
+      res.status(500).json({ error: err });
+    }
+  };
+  
+  
+  exports.deshacerTatuador = async (req, res) => {
+    try {
+      // Buscar el tatuador
+      const tatuador = await Tatuador.findById(req.params.id);
+      if (!tatuador) return res.status(404).json({ error: 'Tatuador not found' });
+  
+      // Actualizar el usuario correspondiente y establecer esTatuador a false
+      const user = await User.findByIdAndUpdate(tatuador.idUsuario, { esTatuador: false }, { new: true });
+      if (!user) return res.status(404).json({ error: 'User not found' });
+  
+      // Eliminar el tatuador
+      await Tatuador.findByIdAndDelete(req.params.id);
+  
+      res.status(200).json({ message: 'User is no longer a tattoo artist.' });
+    } catch (err) {
+      res.status(500).json({ error: err });
+    }
+  };
