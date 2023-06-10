@@ -33,14 +33,11 @@ const usersRoute = require("./backend/routes/users.js");
 const adminRoute = require("./backend/routes/admin.js");
 const authRoute = require("./backend/routes/auth.js");
 const reservaRoute = require("./backend/routes/reserva.js")
-const postRoute = require("./backend/routes/posts.js")
-
 
 
 app.use("/admin", adminRoute);
 app.use("/users", usersRoute);
 app.use("/auth", authRoute);
-app.use("/posts", postRoute);
 app.use("/reserva", reservaRoute);
 
 app.listen(port, (req,res) => {
