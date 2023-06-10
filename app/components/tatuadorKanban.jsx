@@ -7,7 +7,7 @@ import "../styles/kanban.css"
 
 const TatuadorKanban = ({ reservas , esTatuador}) => {
   const [columns, setColumns] = useState({
-    "Pendiente de Aprobación": { name: "Pendiente de Aprobación", items: [] },
+    "Pendiente de Aprobación": { name: "Pendiente Aprobación", items: [] },
     "Aceptadas": { name: "Aceptadas", items: [] },
     "Completadas": { name: "Completadas", items: [] },
     "Canceladas": { name: "Canceladas", items: [] }
