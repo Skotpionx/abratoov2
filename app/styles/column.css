@@ -27,3 +27,6 @@
     flex-direction: column;
     gap: 20px;
 }
+.columnasContainer:nth-child(1) .colorForm{
+    color: #ffe9b0 !important;
+}

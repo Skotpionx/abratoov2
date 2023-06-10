@@ -114,7 +114,7 @@ const Login = () => {
                                             ¿Sin cuenta? Regístrate!
                                         </Button>
                                     </div>  
-
+                                    <span className="problema"> ¿Algún problema con tu cuenta? Contáctanos  <a href="mailto:juanmitfg@gmail.com">aquí</a></span>
                                 </Form>
                             )}
 

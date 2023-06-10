@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { serverVerifyUser, verifyTatuador } = require("../controllers/sessionControllers")
-const { createReserva , getReservaByIDTatuador , getReservaByIDTatuadorAndDate , getReservaByUser, getReservaByIDTatuadorCompleta, MoveReserva} = require("../controllers/reservaController")
+const { createReserva , editReserva ,getReservaByIDTatuador , getReservaByIDTatuadorAndDate , getReservaByUser, getReservaByIDTatuadorCompleta, MoveReserva} = require("../controllers/reservaController")
 const { getIdTatuadorByUserId } = require("../controllers/tatuadorController")
 
 router.post('/createReserva', serverVerifyUser,getReservaByIDTatuadorAndDate, createReserva);
@@ -26,4 +26,5 @@ router.get('/getIDTatuador/:idUsuario', verifyTatuador, getIdTatuadorByUserId)
 
 router.put('/moverReserva/:idReserva', verifyTatuador, MoveReserva)
 
+router.put('/editReserva/:idReserva', verifyTatuador, editReserva);
 module.exports = router;

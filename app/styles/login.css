@@ -83,3 +83,12 @@ h1{
     border-color: black;
     box-shadow: 0px 0px 10px white;
 }
+.problema{
+    margin-top: 2%;
+    color: white;
+    display: block;
+    text-align: center;
+}
+.problema a{
+    text-decoration: none;
+}

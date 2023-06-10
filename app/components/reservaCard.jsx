@@ -85,7 +85,11 @@ const ReservaCard = ({ tatuadores }) => {
     });
   };
 
-
+  const getTomorrow = () => {
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow;
+  };
 
 
 
@@ -176,7 +180,7 @@ const ReservaCard = ({ tatuadores }) => {
             dateFormat="MMMM d, yyyy h:mm aa"
             filterDate={filterWeekends}
             filterTime={(time) => filterWorksHours(time, reservas)}
-            minDate={new Date()}
+            minDate={getTomorrow()}
             required
 
             className={error.fecha && 'is-invalid'}

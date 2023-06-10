@@ -41,8 +41,13 @@ exports.getReservaByIDTatuador = async (req, res) => {
 
 exports.getReservaByIDTatuadorCompleta = async (req, res) => {
   try {
-      const idTatuador = req.params.idTatuador; 
-      const reservas = await Reserva.find({ idTatuador: idTatuador });
+    const idTatuador = req.params.idTatuador; 
+    const currentDate = new Date();
+    const reservas = await Reserva.find({ 
+      idTatuador: idTatuador,
+      fecha: { $gt: currentDate } // Las pasadas no.
+    })
+    .sort({ fecha: 1 }); // Ordenar por fecha de más antigua a más nueva
       
       res.json(reservas);
   } catch(error) {
@@ -101,3 +106,35 @@ exports.MoveReserva = async (req , res ) => {
     res.status(500).json( { message: 'Error interno del servidor', error: error });
   }
 }
+
+exports.editReserva = async (req, res) => {
+  try {
+    // Obtener el ID de la reserva desde el parámetro de la URL
+    const idReserva = req.params.idReserva;
+
+    // Obtener los campos actualizados desde el cuerpo de la solicitud
+    const updatedFields = req.body;
+
+    // Buscar la reserva en la base de datos por su ID
+    let reserva = await Reserva.findById(idReserva);
+
+    // Si la reserva no se encuentra, devolver un error
+    if (!reserva) {
+      return res.status(404).json({ message: 'No se encontró la reserva.' });
+    }
+
+    // Actualizar los campos de la reserva con los valores proporcionados
+    for (let field in updatedFields) {
+      reserva[field] = updatedFields[field];
+    }
+
+    // Guardar la reserva actualizada en la base de datos
+    await reserva.save();
+
+    // Devolver una respuesta exitosa
+    res.status(200).json({ message: 'Reserva actualizada con éxito.' });
+  } catch (error) {
+    // Si ocurre algún error, devolver una respuesta de error
+    res.status(500).json({ message: 'Error interno del servidor', error: error });
+  }
+};

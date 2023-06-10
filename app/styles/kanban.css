@@ -33,22 +33,23 @@
     box-shadow: 0px 0px 10px #ffe9b0;
     color:  #ffe9b0;
 }
-.boardContainer .kanban:nth-child(1) .columnasContainer  > div > .userInfo > span{
+.boardContainer .kanban:nth-child(1) .columnasContainer  .userInfo > span{
     color: black;
     background-color: #ffe9b0 !important;
 }
+
 
 .boardContainer .kanban:nth-child(2) h4{
     color: #8990d8;
 }
 
-.boardContainer .kanban:nth-child(2) .columnasContainer  > div{
+.boardContainer .kanban:nth-child(2) .columnasContainer  > div {
     border:0px;
     box-shadow: 0px 0px 10px #8990d8;
     color: #8990d8;
 }
 
-.boardContainer .kanban:nth-child(2) .columnasContainer  > div > .userInfo > span{
+.boardContainer .kanban:nth-child(2) .columnasContainer   .userInfo > span{
     color: black;
     background-color: #8990d8 !important;
 }
@@ -63,7 +64,7 @@
     color: #8fd69e;
 }
 
-.boardContainer .kanban:nth-child(3) .columnasContainer  > div > .userInfo > span{
+.boardContainer .kanban:nth-child(3) .columnasContainer   .userInfo > span{
     color: black;
     background-color: #8fd69e !important;
 }
@@ -76,7 +77,7 @@
     box-shadow: 0px 0px 10px #ef5a5a;
     color: #ef5a5a;
 }
-.boardContainer .kanban:nth-child(4) .columnasContainer  > div > .userInfo > span{
+.boardContainer .kanban:nth-child(4) .columnasContainer   .userInfo > span{
     color: black;
     background-color: #ef5a5a !important;
 }
