@@ -47,28 +47,19 @@ const ProfileInfo = () => {
         <div className='contenedorGlobal'>
         <div className='contenedorParcial'>
           <Box  p={2} className="boxContainer">
-            <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('perfil')} style={{ cursor: 'pointer' }}>
+            <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('perfil')} style={{ cursor: 'pointer' }} className={activeLink === 'perfil' ? 'activeLink' : ''}>
               Mi Perfil
             </Typography>
-            <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('reservas')} style={{ cursor: 'pointer' }}>
+            <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('reservas')} style={{ cursor: 'pointer' }} className={activeLink === 'reservas' ? 'activeLink' : ''}>
               Mis Reservas
             </Typography>
 
-
-            <Typography variant="h6" component="div" align="center" onClick={() => handleLinkClick('posts')} style={{ cursor: 'pointer' }}>
-              Posts
-            </Typography>
-            <Typography variant="h6" component="div" align="center" onClick={() => handleLinkClick('tatuador')} style={{ cursor: 'pointer' }}>
-              Mis Datos (Tatuador)
-            </Typography>
           </Box>
         </div>
   
         <div className="componenteContainer">
           {activeLink === 'perfil' && <ProfileCard userData={userData} setUserData={setUserData}  />}
           {activeLink === 'reservas' && <ViewReservaCard userData={userData} />}
-          {activeLink === 'posts' && <ProfileCard />}
-          {activeLink === 'tatuador' && <ProfileCard />}  
         </div>
 
           <style jsx>{`

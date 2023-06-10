@@ -56,7 +56,7 @@ exports.getIdTatuadorByUserId = async( req, res) => {
     try{
         const userIdParam = req.params.userId;
 
-        const tatuador = await Tatuador.findOne({ usuarioId: userIdParam });
+        const tatuador = await Tatuador.findOne({ userId : userIdParam });
 
         if(!tatuador){
             res.status(404).json({ message: 'No se encontró ningún tatuador con ese user id.'});
@@ -98,3 +98,29 @@ exports.updateTatuador = async (req, res) => {
       res.status(500).json({ error: err });
     }
   };
+  
+
+
+  exports.getIdTatuadorByUserIdAll = async (req, res) => {
+    try {
+      const { access_token } = req.cookies;
+      if (!access_token) return res.status(401).json({ message: 'No está autenticado', isAuthenticated: false });
+  
+      const decoded = jwt.verify(access_token, process.env.JWT_SECRET);
+      if (!decoded) {
+        return res.status(401).json({ message: 'No está autenticado', isAuthenticated: false });
+      }
+      const tatuador = await Tatuador.findOne({ idUsuario: decoded.userId });
+  
+      if (!tatuador) {
+        res.status(404).json({ message: 'No se encontró ningún tatuador con ese user id.' });
+        return;
+      }
+  
+      res.status(200).json(tatuador);
+    } catch (error) {
+      res.status(500).json({ error: error });
+    }
+  };
+
+  
