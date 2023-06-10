@@ -2,7 +2,7 @@
 import React , {useState, useEffect} from 'react'
 import ProfileCard from './profileCard';
 import ViewReservaCard from './viewReservaCard';
-import AdminPanel from './adminpanel';
+import AdminPanel from './adminPanel';
 import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import Loading from './loading';
