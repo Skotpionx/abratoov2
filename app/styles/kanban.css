@@ -27,6 +27,7 @@
 
 .boardContainer .kanban:nth-child(1) h4{
     color: #ffe9b0;
+    font-size: 23px;
 }
 .boardContainer .kanban:nth-child(1) .columnasContainer  > div{
     border:0px;
