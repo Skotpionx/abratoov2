@@ -44,10 +44,6 @@ const ProfileView = ( { userData}) => {
                         {tatuadorData && userData.esTatuador && (
                           <>
                             <Grid item xs={12}>
-                              <Typography variant="body2" color="textSecondary">
-                                Valoración Media
-                              </Typography>
-                              <Typography variant="body2">{tatuadorData.valoracionMedia ? tatuadorData.valoracionMedia : ''}</Typography>
                             </Grid>
                             <Grid item xs={12}>
                               <Typography variant="body2" color="textSecondary">

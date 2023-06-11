@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {  getAllUsers , getUser , updateUser, deleteUser, getUserByDNI, getUserByEmail} = require("../controllers/usersControllers")
-const {  deshacerTatuador } = require("../controllers/tatuadorController")
+const {  deshacerTatuador , updateTatuador} = require("../controllers/tatuadorController")
 const { verifyAdmin  } = require("../controllers/sessionControllers")
 const { updateUserProfile } = require("../controllers/profileControllers")
 
@@ -13,6 +13,6 @@ router.put('/users/:id', verifyAdmin, updateUser);
 router.delete('/users/:id', verifyAdmin, deleteUser);
 router.delete('/eliminarTatuador/:id', verifyAdmin, deshacerTatuador);
 router.put('/editUser/:userId', verifyAdmin, updateUserProfile);
-
+router.put('/editTatuador/:_id', verifyAdmin, updateTatuador)
 
 module.exports = router;

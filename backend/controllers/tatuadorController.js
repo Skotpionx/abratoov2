@@ -28,13 +28,14 @@ exports.getAllTattooArtists = async (req, res) => {
       // Obtener información adicional de los usuarios asociados a cada tatuador
     const tattooArtistsWithUserInfo = await Promise.all(
         tattooArtists.map(async (tattooArtist) => {
-            const { idUsuario, experiencia } = tattooArtist;
+            const { idUsuario, experiencia , ubicacion } = tattooArtist;
             const user = await User.findById(idUsuario).lean();
             const { _id, pseudonimo, imagenes, nombre } = user;
         return {    
             idTatuador: tattooArtist._id,
             idUsuario: _id,
             experiencia,
+            ubicacion,
             pseudonimo,
             nombre,
             imagenes,
@@ -52,9 +53,9 @@ exports.getAllTattooArtists = async (req, res) => {
 
 exports.getIdTatuadorByUserId = async( req, res) => {
     try{
-        const userIdParam = req.params.userId;
+        const userIdParam = req.params.idUsuario
 
-        const tatuador = await Tatuador.findOne({ userId : userIdParam });
+        const tatuador = await Tatuador.findOne({ idUsuario : userIdParam });
 
         if(!tatuador){
             res.status(404).json({ message: 'No se encontró ningún tatuador con ese user id.'});
@@ -69,7 +70,7 @@ exports.getIdTatuadorByUserId = async( req, res) => {
 exports.updateTatuador = async (req, res) => {
     const updates = req.body;
     try {
-      const updatedTatuador = await Tatuador.findByIdAndUpdate(req.params.id, updates, { new: true });
+      const updatedTatuador = await Tatuador.findByIdAndUpdate(req.params._id, updates, { new: true });
       if (!updatedTatuador) return res.status(404).json({ error: 'No se ha encontrado el tatuador' });
       res.status(200).json(updatedTatuador);
     } catch (err) {

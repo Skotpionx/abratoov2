@@ -124,7 +124,7 @@ exports.MoveReserva = async (req , res ) => {
 exports.editReserva = async (req, res) => {
   try {
     // Obtener el ID de la reserva desde el parámetro de la URL
-    const idReserva = req.params.idReserva;
+    const idReserva = req.params._id;
 
     // Obtener los campos actualizados desde el cuerpo de la solicitud
     const updatedFields = req.body;

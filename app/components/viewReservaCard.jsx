@@ -23,9 +23,11 @@ const ViewReservaCard = ({ userData }) => {
     } else {
       const obtenerReservasTatuador = async () => {
         try {
+          console.log(userData._id);
           const responseIDTatuador = await axios.get(`${API_URL}/reserva/getIDTatuador/${userData._id}`, { withCredentials: true });
+          console.log(responseIDTatuador.data);
           const response = await axios.get(`${API_URL}/reserva/getReservas/${responseIDTatuador.data}`, { withCredentials: true });
-
+          console.log(response.data);
           setTatuadorReserva(response.data);
         } catch (error) {
           console.log(error);

@@ -3,6 +3,8 @@ import React , {useState, useEffect} from 'react'
 import ProfileCard from './profileCard';
 import ViewReservaCard from './viewReservaCard';
 import AdminPanel from './adminPanel';
+import AdminPanelTatuadores from './adminPanelTatuadores';
+import AdminPanelReservas from './adminPanelReservas';
 import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import Loading from './loading';
@@ -57,10 +59,19 @@ const ProfileInfo = () => {
               Mis Reservas
             </Typography>
             {userData.admin && (
-              <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('admin')} style={{ cursor: 'pointer' }} className={activeLink === 'admin' ? 'activeLink' : ''}>
-                Panel de Administración.
-              </Typography>
+              <>
+                <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('admin')} style={{ cursor: 'pointer' }} className={activeLink === 'admin' ? 'activeLink' : ''}>
+                  Panel de Usuarios
+                </Typography>
+                <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('tatuadoresAdmin')} style={{ cursor: 'pointer' }} className={activeLink === 'tatuadoresAdmin' ? 'activeLink' : ''}>
+                  Panel de Tatuadores
+                </Typography>
+                <Typography variant="h6" component="div" align="center" mb={2} onClick={() => handleLinkClick('tatuadoresReserva')} style={{ cursor: 'pointer' }} className={activeLink === 'tatuadoresReserva' ? 'activeLink' : ''}>
+                  Panel de Reservas
+                </Typography>
+              </>
             )}
+
           </Box>
         </div>
   
@@ -68,6 +79,8 @@ const ProfileInfo = () => {
           {activeLink === 'perfil' && <ProfileCard userData={userData} setUserData={setUserData}  />}
           {activeLink === 'reservas' && <ViewReservaCard userData={userData} />}
           {activeLink === 'admin' && userData.admin && <AdminPanel userData={userData} />}
+          {activeLink === 'tatuadoresAdmin' && userData.admin && <AdminPanelTatuadores userData={userData} />}
+          {activeLink === 'tatuadoresReserva' && userData.admin && <AdminPanelReservas userData={userData} />}
 
         </div>
 

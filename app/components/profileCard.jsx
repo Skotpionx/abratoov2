@@ -121,6 +121,7 @@ const validatePasswords = (currentPassword, newPassword) => {
                     alt="Imagen de perfil"
                     width={200}   
                     height={200}  
+                    style={{ objectFit:'cover'}}
                   />
                 </Grid>
                 <Grid item xs={12} sm container>
