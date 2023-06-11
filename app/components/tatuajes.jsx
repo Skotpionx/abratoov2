@@ -1,7 +1,7 @@
 // pages/Tattoos.js
 import React from 'react';
 import { Container, Grid, Box } from '@mui/material';
-import TattooCard from '../components/TattooCard';
+import TattooCard from '../components/tattooCard';
 
 const Tatuajes = () => {
   const tattooData = [
