@@ -3,9 +3,8 @@ import '../app/styles/estudio.css'
 import '../app/styles/font.css'
 import NavBar from '../app/components/navBar';
 import Footer from '../app/components/footer';
-import Recepcion from "../app/components/recepcion"
 import Head from 'next/head'
-import Tatuajes from '@/app/components/tatuajes';
+import Tatuajes from '../app/components/tatuajes';
 
 const Estudio = () => {
     return (
