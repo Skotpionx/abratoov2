@@ -27,5 +27,5 @@ router.put('/moverReservaCancelada/:idReserva', serverVerifyUser, MoveReserva);
 //Editarla por un administrador 
 router.put('/editAdminReserva/:_id', verifyAdmin, editReserva);
 //Editarla por un usuario
-router.put('/editReserva/:idReserva', verifyTatuador, editReserva);
+router.put('/editReserva/:_id', verifyTatuador, editReserva);
 module.exports = router;
