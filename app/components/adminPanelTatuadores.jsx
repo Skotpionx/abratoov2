@@ -28,7 +28,6 @@ const AdminPanelTatuadores = () => {
   const handleSaveChanges = async () => {
     try {
       const response = await axios.put(`${API_URL}/admin/editTatuador/${editData.idTatuador}`, editData, { withCredentials: true });
-      console.log(response.data);
       if (response.status === 200) {
         setTatuadorData(tatuadorData.map(tatuador => tatuador.idTatuador === editData.idTatuador ? { ...tatuador, ...editData } : tatuador));
         setEditMode(null);

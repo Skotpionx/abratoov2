@@ -132,7 +132,7 @@ const ReservaCard = ({ tatuadores }) => {
   const filterWorksHours = (time, reservas) => {
     const hour = time.getHours();
   
-    // Verificar si la hora está dentro del horario de trabajo
+    // Verificamos si las horas son en horario de trabajo (se hace en server también para horas entre 00 y 8, yta que esta seleecionada las 00 por defecto)
     const isWorkingHour = (hour >= 8 && hour < 14) || (hour >= 16 && hour < 20);
   
     if (isWorkingHour) {
@@ -141,7 +141,7 @@ const ReservaCard = ({ tatuadores }) => {
         return (
           reserva.fecha.hours === hour &&
           reserva.fecha.day === time.getDate() &&
-          reserva.fecha.month === time.getMonth() + 1 && // Los meses en JavaScript empiezan en 0
+          reserva.fecha.month === time.getMonth() + 1 && // Los meses en js empiezan en 0
           reserva.fecha.year === time.getFullYear() &&
           reserva.fecha.minutes === time.getMinutes()
         );

@@ -212,7 +212,6 @@ const validatePasswords = (currentPassword, newPassword) => {
                       <StyledButton variant="outlined" onClick={handleEditClick}> Editar </StyledButton>
                       { editMode  && <StyledButton variant="contained" color="primary" onClick={handleUpdateClick}> Actualizar </StyledButton> }
                       <StyledButton variant="outlined" onClick={handleLogoutClick}> Cerrar sesión </StyledButton>
-                      {/* <StyledButton variant="outlined" onClick={handleCrearTatuador}> Crear tatuador </StyledButton> */}
                     </Grid>
                   </Grid>
                 </Grid>

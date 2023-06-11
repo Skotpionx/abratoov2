@@ -24,7 +24,7 @@ const EstudioCardDos = ( {show }) => {
             dedicado y apasionado por el arte del tatuaje, aportando su <span className="font-weight-bold"> estilo </span>
             y <span className="font-weight-bold"> técnicas únicas. </span> 
             </p> 
-            <p className="recepcion-paragraph">Para nosotros, <span class="font-weight-bold">  la competencia y la profesionalidad son esenciales. </span> 
+            <p className="recepcion-paragraph">Para nosotros, <span className="font-weight-bold">  la competencia y la profesionalidad son esenciales. </span> 
                 Cada miembro de nuestro equipo está <span className="font-weight-bold">comprometido </span>  con su formación continua 
                 y el perfeccionamiento de su arte, asegurando que siempre estén al día con
                 las últimas tendencias y técnicas en el mundo del tatuaje. 

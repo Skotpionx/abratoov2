@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Cascadia Code';
+    src: url(../../fonts/CascadiaCode.ttf);
+}
+
+*{
+    font-family: 'Cascadia Code' !important;
+}
+.tattooCard:nth-child(odd) .cardContent{
+    background-color: black;
+    color: #ffd65f !important;
+    text-shadow: 0px 0px 4px;
+}
+
+.tattooCard:nth-child(even) .cardContent{
+    background-color: white;
+    color: black !important;
+    text-shadow: 0px 0px 4px;
+}
+.padding{
+    padding: 2% !important;
+}

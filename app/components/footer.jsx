@@ -34,10 +34,10 @@ const Footer = () => {
                                 Soul Tattoo
                             </ListGroupItem>
                             <ListGroupItem>
-                                Teléfono: +34 123 456 789 
+                                Teléfono: +34 616 41 49 92 
                             </ListGroupItem>
                             <ListGroupItem>
-                                Dirección: Calle de la Paz, 5, Granada
+                                Dirección: Calle San Marcos 3, Granada
                             </ListGroupItem>
                         </ListGroup>
                     </Col>
@@ -50,8 +50,8 @@ const Footer = () => {
                                 </Link>
                             </ListGroupItem>
                             <ListGroupItem className="footericons">
-                                <Link href="https://instagram.com/abratatoo "> 
-                                <FontAwesomeIcon icon={faInstagram} style={{ color: 'white', width: '20px', height: '20px' }} />abratatoo 
+                                <Link href="https://instagram.com/Abra_tattoo "> 
+                                <FontAwesomeIcon icon={faInstagram} style={{ color: 'white', width: '20px', height: '20px' }} />Abra_tattoo
                                 </Link>
                             </ListGroupItem>
                             <ListGroupItem className="footericons">

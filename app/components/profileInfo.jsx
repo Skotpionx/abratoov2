@@ -32,7 +32,11 @@ const ProfileInfo = () => {
     fetchData();
   }, []);
 
-    
+  useEffect(() => {
+    if (router.query.activeLink) {
+      setActiveLink(router.query.activeLink);
+    }
+  }, [router.query.activeLink]);
 
   if (isLoading) {
       return (
@@ -45,9 +49,6 @@ const ProfileInfo = () => {
     const handleLinkClick = (link) => {
       setActiveLink(link);
     };
-
-    console.log(userData);
-    // Si el usuario está logueado, muestra la información del perfil
     return (
         <div className='contenedorGlobal'>
         <div className='contenedorParcial'>

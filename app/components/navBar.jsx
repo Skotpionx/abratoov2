@@ -1,6 +1,5 @@
 'use client'
-import { Navbar, Nav , Container } from 'react-bootstrap'
-import { useState } from 'react'
+import { Navbar, Nav  } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -17,27 +16,20 @@ const NavBar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto center">
               <Nav.Link href="/estudio"> 
-              {/* Span's para hacer la animación de recorrido*/}
+              {/* Span para hacer la animación de recorrido*/}
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               Recepción </Nav.Link>
-              <Nav.Link href="#tienda">
+              <Nav.Link href="/profile?activeLink=reservas">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
-              Ubicación </Nav.Link>
-              <Nav.Link href="#citas"> 
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              Citas </Nav.Link>
+              Mis Reservas </Nav.Link>
             </Nav>
               <div className="navbarImageContainer">
               <Link href="/">
@@ -52,27 +44,13 @@ const NavBar = () => {
               </Link>
               </div>
             <Nav className="ml-auto">
-              <Nav.Link href="#sobreMi">
+              <Nav.Link href="/tatuajes">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               <span></span>
-                Sobre mí</Nav.Link>
-              <Nav.Link href="#blog">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-                Blog</Nav.Link>
-              <Nav.Link href="#contacto">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-                Contacto</Nav.Link>
+                Tatuajes</Nav.Link>
               <Nav.Link href="/auth">
                 <FontAwesomeIcon icon={faUser} className="svg-icon"/>
               </Nav.Link>

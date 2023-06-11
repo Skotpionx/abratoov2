@@ -51,7 +51,6 @@ const AdminPanelReservas = () => {
     try {
       await axios.put(`${API_URL}/reserva/editAdminReserva/${editData._id}`, editData, { withCredentials: true });
       setEditMode(null);
-      // Re-fetch reserva data to ensure we have the updated data displayed
       const reservaResponse = await axios.get(`${API_URL}/reserva/getAllReservas`, { withCredentials: true });
       setReservaData(reservaResponse.data);
     } catch (error) {
