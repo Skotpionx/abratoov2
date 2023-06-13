@@ -33,7 +33,7 @@ const EstudioCardDos = ( {show }) => {
                 detalles.
             </p>
             
-            <p className="recepcion-paragraph"> ¡VEN A CONOCERNOS Y DISFRUTA NUESTRA MÚSICA <FontAwesomeIcon icon={faHeadphones}  color="white" style={{width:'50px'}} /></p> 
+            <p className="recepcion-paragraph"> ¡VEN A CONOCERNOS Y DISFRUTA NUESTRA MÚSICA! <FontAwesomeIcon icon={faHeadphones}  color="white" style={{width:'50px'}} /></p> 
             
             </Col>
             <Col md={6} className="recepcion-image-col">

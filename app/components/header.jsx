@@ -15,8 +15,8 @@ const Header = () => {
     const promociones = [
         {
             imageUrl: "/daliArtista.jpg",
-            title: "DIA DEL ARTISTA",
-            description: "Por un tatuaje de algún personaje histórico, un tatuaje de 5x5 <span class='colorText'>GRATIS</span>!"
+            title: "DÍA DEL ARTISTA",
+            description: "Por un tatuaje de algún personaje histórico, un tatuaje de 5x5 ¡<span class='colorText'>GRATIS</span>!"
         },
         {
             imageUrl: "/tattooArtist.jfif",
@@ -26,7 +26,7 @@ const Header = () => {
         {
             imageUrl: "/tattooDesign.jpeg",
             title: "PUERTAS ABIERTAS",
-            description: "Aprovecha para preguntar todos los secretos a nuestros artistas!"
+            description: "¡Aprovecha para preguntar todos los secretos a nuestros artistas!"
         }
     ];
     let lastScrollTop = 0;
@@ -59,7 +59,7 @@ const Header = () => {
             <div className='divTxt'>
                 <div>
                     <h1 > Soul Tattoo GRX  </h1>
-                    <span> Desde 2016 tatuando más que tatuajes. Reserva una cita para el tuyo!</span>
+                    <span> Desde 2016 creando más que tatuajes. ¡Reserva una cita para el tuyo!</span>
                 </div>
                 <div className='promocionesContainer'>
                     <h5>¿Aún no conoces nuestras magníficas </h5>

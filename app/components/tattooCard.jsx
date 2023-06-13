@@ -21,7 +21,7 @@ const TattooCard = ({ imgSrc, theme, artist, price, description }) => (
         Tatuador: {artist}
       </Typography>
       <Typography >
-        Precio: ${price}
+        Precio: {price}€
       </Typography>
       <Typography variant="body2">
         {description}

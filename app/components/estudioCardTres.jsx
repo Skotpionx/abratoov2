@@ -44,7 +44,7 @@ const EstudioCardTres = ( {show } ) => {
             <p className="recepcion-paragraph"> 
                 Nuestra área de tatuajes es un
                 <span className="font-weight-bold"> espacio dedicado al arte </span> y la expresión personal.
-                <span className="font-weight-bold"> Cada tatuaje es único </span> , y nos satisface enormemente
+                <span className="font-weight-bold"> Cada tatuaje es único, </span>  y nos satisface enormemente
                 ser parte de esa creación.
             </p> 
             </Col>

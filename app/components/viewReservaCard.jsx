@@ -41,7 +41,7 @@ const ViewReservaCard = ({ userData }) => {
         <div>
             {userReserva && (
               <>
-                <p className="userDataInformation"> Puedes cancelar las reservas moviéndolas a "Cancelada", este proceso no tiene vuelta atrás. </p>
+                <p className="userDataInformation"> Puedes cancelar las reservas moviéndolas a "Canceladas", este proceso no tiene vuelta atrás. </p>
                 <TatuadorKanban reservas={userReserva}  esTatuador={userData.esTatuador} />
               </>
             )}

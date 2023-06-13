@@ -99,7 +99,7 @@ const Register = ({ setRegistering }) => {
         <div>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="row">
-                    <Form.Label className="col-md-2">Nombre</Form.Label>
+                    <Form.Label className="col-md-2">Nombre*</Form.Label>
                     <div className="col-md-4">
                         <Form.Control
                             type="text"
@@ -113,7 +113,7 @@ const Register = ({ setRegistering }) => {
                         />
                         <Form.Control.Feedback type="invalid">{errors.nombre}</Form.Control.Feedback>
                     </div>
-                    <Form.Label className="col-md-2">Edad</Form.Label>
+                    <Form.Label className="col-md-2">Edad*</Form.Label>
                     <div className="col-md-4">
                         <Form.Control
                             type="number"
@@ -129,7 +129,7 @@ const Register = ({ setRegistering }) => {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>Email*</Form.Label>
                     <Form.Control
                         type="email"
                         name="email"
@@ -141,7 +141,7 @@ const Register = ({ setRegistering }) => {
                     />
                     <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
 
-                    <Form.Label> DNI </Form.Label>
+                    <Form.Label> DNI*</Form.Label>
                     <Form.Control
                         type="text"
                         name="dni"
@@ -153,7 +153,7 @@ const Register = ({ setRegistering }) => {
                     />
                         <Form.Control.Feedback type="invalid">{errors.dni}</Form.Control.Feedback>
 
-                    <Form.Label> Password </Form.Label>
+                    <Form.Label> Password*</Form.Label>
                     <Form.Control
                         type="password"
                         name="password"
@@ -161,7 +161,7 @@ const Register = ({ setRegistering }) => {
                         onChange={handleChange}
                         required
                     />
-                    <Form.Label> Confirmar Password </Form.Label>
+                    <Form.Label> Confirmar Password*</Form.Label>
                     <Form.Control
                         type="password"
                         name="password2"
@@ -174,7 +174,7 @@ const Register = ({ setRegistering }) => {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Label>Teléfono*</Form.Label>
                     <Form.Control
                         type="tel"
                         name="telefono"
@@ -187,7 +187,7 @@ const Register = ({ setRegistering }) => {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Dirección</Form.Label>
+                    <Form.Label>Dirección*</Form.Label>
                     <Form.Control
                         as="textarea"
                         name="direccion"
@@ -200,7 +200,7 @@ const Register = ({ setRegistering }) => {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Pseudónimo</Form.Label>
+                    <Form.Label>Pseudónimo*</Form.Label>
                     <Form.Control
                         type="text"
                         name="pseudonimo"
@@ -229,7 +229,7 @@ const Register = ({ setRegistering }) => {
                     </div>
                     <div className="col-md-8">
                         <Button variant="secondary" onClick={() => setRegistering(false)} className="registerButton">
-                        ¿Ya tienes una cuenta? Logeate!
+                        ¿Ya tienes una cuenta? ¡Logeate!
                         </Button>
                     </div>
                 </Form.Group>

@@ -68,11 +68,11 @@ const ReservaContainer = () => {
   });
 
   return (
-    <div>
-      <h1 className='textShadowWhite boxShadow interestedContainer'>
+    <div style={{paddingTop: "15%"}}>
+      <h1 className='textShadowWhite boxShadow interestedContainer' >
       ¿INTERESADO? 
         <span className='promociones interested' onClick={handleButtonClick}>
-        RESERVA YA!
+        ¡RESERVA YA!
           <span></span>
           <span></span>
           <span></span>

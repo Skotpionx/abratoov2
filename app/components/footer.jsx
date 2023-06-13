@@ -55,7 +55,7 @@ const Footer = () => {
                                 </Link>
                             </ListGroupItem>
                             <ListGroupItem className="footericons">
-                                <Link href="soultattoogrx"> 
+                                <Link href="https://www.tiktok.com/@soultattoogrx"> 
                                 <FontAwesomeIcon icon={faTiktok} style={{ color: 'white', width: '20px', height: '20px' }} /> soultattoogrx
                                 </Link>
                             </ListGroupItem>

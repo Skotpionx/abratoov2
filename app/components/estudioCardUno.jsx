@@ -27,15 +27,15 @@ const EstudioCardUno = ( {show} ) => {
                 
                 <p className="recepcion-paragraph"> 
                     En nuestro estudio de tatuajes, la acogida que damos a nuestros clientes es fundamental. 
-                    Nos enorgullece ofrecer una <span className="font-weight-bold" > atención personalizada </span>, entendiendo y respetando las ideas únicas de cada persona que entra por nuestra puerta.
+                    Nos enorgullece ofrecer una <span className="font-weight-bold" > atención personalizada, </span> entendiendo y respetando las ideas únicas de cada persona que entra por nuestra puerta.
                 </p>
 
                 <p className="recepcion-paragraph">
                     Para nosotros, la transparencia es esencial. 
-                    Por ello, proporcionamos  <span className="font-weight-bold" > presupuestos sin compromiso </span>, permitiéndote conocer de antemano el costo de tu idea sin sentirte presionado a tomar una decisión inmediata.
+                    Por ello, proporcionamos  <span className="font-weight-bold" > presupuestos sin compromiso, </span> permitiéndote conocer de antemano el costo de tu idea sin sentirte presionado a tomar una decisión inmediata.
                     Sabemos que un tatuaje es una decisión importante, por lo que, <span className="font-weight-bold" > tómate el tiempo necesario</span>  para sentirte completamente seguro y cómodo.
                 </p>
-                <h1 className='recepcion-heading'> Y TENEMOS CARAMELOS GRATIS!! <FontAwesomeIcon icon={faCandyCane}  color="red" style={{width:'50px'}} /></h1>
+                <h1 className='recepcion-heading'> ¡¡Y TENEMOS CARAMELOS GRATIS!! <FontAwesomeIcon icon={faCandyCane}  color="red" style={{width:'50px'}} /></h1>
             </Col>
             </Row>
         </animated.div>

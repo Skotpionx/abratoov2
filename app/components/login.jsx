@@ -55,14 +55,14 @@ const Login = () => {
                     <Row>
                         <Col xs={12} md={6}>
                             <h2> Soul Tatoo Grx </h2>
-                            <Badge>  Tu estudio de tatuajes de confianza en granada </Badge>
+                            <Badge>  Tu estudio de tatuajes de confianza en Granada </Badge>
 
                             <div className="registerReasons">
                                 <h1> ¿Qué ofrecemos? </h1>
-                                <Badge>  + 20 años de experiencia </Badge> 
-                                <Badge>  + 3000 clientes satisfechos</Badge>
+                                <Badge>  + 8 años de experiencia </Badge> 
+                                <Badge>  + 300 clientes satisfechos</Badge>
                                 <Badge>  Precios competitivos</Badge>
-                                <h1> ¿A  qué esperas? ¿Te nos unes 😜? </h1>
+                                <h1 style={{ marginBottom: '15%'}}> ¿A  qué esperas? ¿Te nos unes 😜? </h1>
                             </div> 
                         </Col>
 
@@ -111,7 +111,7 @@ const Login = () => {
                                         </Button>
 
                                         <Button variant="secondary" onClick={() => setRegistering(true)} className="registerButton">
-                                            ¿Sin cuenta? Regístrate!
+                                            ¿Sin cuenta? ¡Regístrate!
                                         </Button>
                                     </div>  
                                     <span className="problema"> ¿Algún problema con tu cuenta? Contáctanos  <a href="mailto:juanmitfg@gmail.com">aquí</a></span>
