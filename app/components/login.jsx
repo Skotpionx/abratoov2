@@ -54,7 +54,7 @@ const Login = () => {
                 <Container className="auth-form-container">
                     <Row>
                         <Col xs={12} md={6}>
-                            <h2> Soul Tatoo Grx </h2>
+                            <h2> Soul Tattoo Grx </h2>
                             <Badge>  Tu estudio de tatuajes de confianza en Granada </Badge>
 
                             <div className="registerReasons">
